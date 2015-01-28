@@ -1,0 +1,58 @@
+\title{Assignment 1: CS 763, Computer Vision}
+\author{Sasank Chilamkurthy\\ Tharun Kumar Reddy\\ Rajeev Puppala}
+
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{todonotes}
+\usepackage[margin=0.5in]{geometry}
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+\item \textit{In class, we have seen image formation on a flat screen (i.e. image plane) with a pinhole camera. Now suppose the screen was wrapped on the surface of a sphere and hence, the 3D points were projected onto a spherical surface. Derive a relationship between the coordinates of a 3D point $P = (X,Y,Z)$ and its image on such a screen (both in camera coordinate system). If you had to calibrate this sort of a system, what are the additional intrinsic parameters of the camera as compared to the case of an image plane ? \textsf{[4 points]}}
+\begin{itemize}
+	\item[Ans.] Let origin be the pinhole and $(0,0,c)$ be the centre and $r$ be the radius of the screen sphere. Intersection of line passing through the pinhole and the point $P = (X,Y,Z)$ and screen sphere is the requried projection.
+	Since general point on the sphere can be parametrized as $(r\sin{\theta}\cos{\phi}, r\sin{\theta}\sin{\phi}, c+r\cos{\theta})$,
+	\[	\frac{r\sin{\theta}\cos{\phi}}{X} = \frac{r\sin{\theta}\sin{\phi}}{Y} = \frac{c+r\cos{\theta}}{Z}
+	\]
+	From first part of the equation,
+	\begin{align*}
+		\frac{r\sin{\theta}\cos{\phi}}{X} &= \frac{r\sin{\theta}\sin{\phi}}{Y}\\
+		\tan{\phi} &= Y/X  \\
+		\phi &= \tan ^{-1}{\frac{Y}{X}} \\
+		\sin{\phi} &= \frac{Y}{\sqrt{X^2+Y^2}}
+	\end{align*}
+
+	using this in the second part of the equation,
+	\begin{align*}
+		\frac{r\sin{\theta}\sin{\phi}}{Y} &= \frac{c+r\cos{\theta}}{Z}\\
+		\frac{r\sin{\theta}}{\sqrt{X^2+Y^2}} &= \frac{c+r\cos{\theta}}{Z}
+	\end{align*}
+	\todo[inline]{complete these equations}
+
+	Additional intrinsic parameters we find in such system are radius $r$ and centre $c$ of the screen sphere.
+\end{itemize}
+
+
+\item \textit{In this exercise, we will prove the orthocenter theorem pertaining to the vanishing points $Q,R,S$ of three mutually perpendicular directions $OQ, OR, OS$, where $O$ is the pinhole (origin of camera coordinate system). Let the image plane be $Z = f$. Recall that two directions $v_1$ and $v_2$ are orthogonal if $v^T_1 v_2 = 0$. One can conclude that $OS$ is orthogonal to $OR-OQ$ (why?). Also the optical axis $Oo$ (where $o$ is the optical center) is orthogonal to $OR-OQ$ (why?). Hence the plane formed by triangle $OSo$ is orthogonal to $OR-OQ$ and hence line $oS$ is perpendicular to $OR-OQ = QR$ (why?). Likewise $oR$ and $oQ$ are perpendicular to $QS$ and $RS$. Hence we have proved that the altitudes of the triangle $QRS$ are concurrent at the point $o$. QED. Now, in this proof, I considered the three perpendicular lines to be passing through $O$. How will you modify the proof if the three lines did not pass through $O$? \textsf{[4 points]}}
+
+\item Prove that the vanishing points of three coplanar lines are collinear. \textsf{[2 points]}
+
+\item Consider a triangle (in 3D) whose side lengths are known to you. You capture an image of this triangle and mark out the positions of its three vertices in the image (assume all vertices were visible when you took the picture). Suppose, that you knew the 3D coordinates of exactly one vertex of the triangle, in the camera coordinate system. Explain how you will determine the 3D coordinates of the other two vertices, and write down the key equations (I do not expect you to solve the equations). Assume the pixel resolution of your camera to be 1 in both directions and the optical center to be $(0,0)$. Do not assume that you knew the focal length. \textsf{[4 points]}
+
+\item Consider two sets of corresponding points $\{\mathbf{p}_{1i} = (x_{1i},y_{1i})\}_{i=1}^{n}$ and $\{\mathbf{p}_{2i} = (x_{2i},y_{2i})\}_{i=1}^{n}$. Assume that each pair of corresponding points is related as follows: $\mathbf{p}_{2i} = \alpha \mathbf{R} \mathbf{p}_{1i} + \mathbf{t} + \mathbf{\eta}_i$ where $\mathbf{R}$ is an unknown rotation matrix, $\mathbf{t}$ is an unknown translation vector, $\alpha$ is an unknown scalar factor and $\mathbf{\eta}_i$ is a vector (unknown) representing noise. Explain how you will extend the method we studied in class for estimation of $\mathbf{R}$ to estimate $\alpha$ and $\mathbf{t}$ as well. Derive all necessary equations (do not merely guess the answers). \textsf{[5 points]}
+
+\item You are given two datasets in the folder \url{http://www.cse.iitb.ac.in/~ajitvr/CS763_Spring2015/HW1/Calib_data}. The file names are Features2D\_dataset1.mat, Features3D\_dataset1.mat, Features2D\_dataset2.mat and \\ Features3D\_dataset2.mat. Each dataset contains (1) the XYZ coordinates of $N$ points marked out on a calibration object, and (2) the XY coordinates of their corresponding projections onto an image plane. Your job is to write a MATLAB program which will determine the $3 \times 4$ projection matrix $M$ such that $P_1 = MP$ where $P$ is a $4 \times N$ matrix containing the 3D object points (in homogeneous coordinates) and $P_1$ is a $3 \times N$ matrix containing the image points (in homogeneous coordinates). Use the SVD method and print out the matrix $M$ on screen (include it in your pdf file as well). Write a piece of code to verify that your computed $M$ is correct. For any one dataset, repeat the computation of the matrix $M$ after adding zero mean i.i.d. Gaussian noise of standard deviation $\sigma = 0.05 \times max_c$ (where $max_c$ is the maximum absolute value of the X,Y,Z coordinate) to every coordinate of $P$ and $P_1$ (leave the homogeneous coordinates unchanged). Comment on your results. Include these comments in your pdf file that you will submit. \textbf{Tips:} A mat file can be loaded into MATLAB memory using the `load' command. To add Gaussian noise, use the command `randn'. \textsf{[5 points]}
+
+\item In this exercise, you will estimate the homography between a pair of images using the method we studied in class. You should use the well-known SIFT algorithm to (1) detect salient feature points in both the images, and (2) determine pairs of matching points given the two point sets (`matching point pair' refers to points in the two images representing the same physical entity). The code for performing both these tasks is available at \url{http://www.cs.ubc.ca/~lowe/keypoints/}. We may study the internal details of how SIFT works in a separate set of lectures in class, but for this exercise, just assume this package is a magic blackbox. Now, given this set of matching pairs of points produced by the SIFT package, your job is to estimate the homography between the point sets. Write a routine of the form $\textrm{H = homography(im1,im2)}$ where $H$ is the homography matrix that will transform the first image. You will use data from the folder \url{http://www.cse.iitb.ac.in/~ajitvr/CS763_Spring2015/HW1/Homography/}. Do as follows:
+\begin{enumerate}
+\item Apply the homography transformation in the file `Hmodel.mat' to the image `goi1\_downsampled.jpg' using reverse warping to generate a warped image. Now estimate the homography that transforms the first image into its warped version. Apply the estimated transformation to the first image (using reverse warping) and display all three images side by side in your report. Also print the model and estimated homography matrices (make sure you normalize both so that $H(3,3) = 1$ in both cases). 
+\item Determine the homography that transforms the image `goi1\_downsampled.jpg' to the second image  `goi2\_downsampled.jpg'. Warp the first image (using reverse warping) and compare it to the second. Display all three images side by side in your report. Also print the estimated homography matrix normalized so that $H(3,3) = 1$. 
+\end{enumerate}
+\textbf{Note:} You may not get perfect answers for the motion estimate due to errors in SIFT, but you should get a reasonable alignment. While warping, crop off the portions of the image that do not fit into the original size. You may use the nearest neighbor method for interpolation during warping. I encourage you to try out this experiment on images of planar surfaces from different viewpoints that you should take with a real camera. You will notice that the warp estimate will often be very wrong due to several incorrect matches (called as `outliers'). In a subsequent assignment, we will implement a method that will be reasonably immune to these outliers. At that point, we will attempt to mosaic together two or more pictures as well. \textsf{[6 points]}
+\end{enumerate}
+\end{document}
