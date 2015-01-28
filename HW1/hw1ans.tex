@@ -7,6 +7,7 @@
 \usepackage{amssymb}
 \usepackage{hyperref}
 \usepackage{ulem}
+\usepackage{fancyvrb}
 \usepackage{todonotes}
 \usepackage[margin=0.5in]{geometry}
 \begin{document}
@@ -34,7 +35,7 @@
 	\end{align*}
 	\todo[inline]{complete these equations}
 
-	Additional intrinsic parameters we find in such system are radius $r$ and centre $c$ of the screen sphere.
+	Additional intrinsic parameters we find in such system are radius $r$ and centre $c$ of the screen sphere. 
 \end{itemize}
 
 
@@ -47,7 +48,63 @@
 \item Consider two sets of corresponding points $\{\mathbf{p}_{1i} = (x_{1i},y_{1i})\}_{i=1}^{n}$ and $\{\mathbf{p}_{2i} = (x_{2i},y_{2i})\}_{i=1}^{n}$. Assume that each pair of corresponding points is related as follows: $\mathbf{p}_{2i} = \alpha \mathbf{R} \mathbf{p}_{1i} + \mathbf{t} + \mathbf{\eta}_i$ where $\mathbf{R}$ is an unknown rotation matrix, $\mathbf{t}$ is an unknown translation vector, $\alpha$ is an unknown scalar factor and $\mathbf{\eta}_i$ is a vector (unknown) representing noise. Explain how you will extend the method we studied in class for estimation of $\mathbf{R}$ to estimate $\alpha$ and $\mathbf{t}$ as well. Derive all necessary equations (do not merely guess the answers). \textsf{[5 points]}
 
 \item You are given two datasets in the folder \url{http://www.cse.iitb.ac.in/~ajitvr/CS763_Spring2015/HW1/Calib_data}. The file names are Features2D\_dataset1.mat, Features3D\_dataset1.mat, Features2D\_dataset2.mat and \\ Features3D\_dataset2.mat. Each dataset contains (1) the XYZ coordinates of $N$ points marked out on a calibration object, and (2) the XY coordinates of their corresponding projections onto an image plane. Your job is to write a MATLAB program which will determine the $3 \times 4$ projection matrix $M$ such that $P_1 = MP$ where $P$ is a $4 \times N$ matrix containing the 3D object points (in homogeneous coordinates) and $P_1$ is a $3 \times N$ matrix containing the image points (in homogeneous coordinates). Use the SVD method and print out the matrix $M$ on screen (include it in your pdf file as well). Write a piece of code to verify that your computed $M$ is correct. For any one dataset, repeat the computation of the matrix $M$ after adding zero mean i.i.d. Gaussian noise of standard deviation $\sigma = 0.05 \times max_c$ (where $max_c$ is the maximum absolute value of the X,Y,Z coordinate) to every coordinate of $P$ and $P_1$ (leave the homogeneous coordinates unchanged). Comment on your results. Include these comments in your pdf file that you will submit. \textbf{Tips:} A mat file can be loaded into MATLAB memory using the `load' command. To add Gaussian noise, use the command `randn'. \textsf{[5 points]}
+\begin{itemize}
+	\item[Ans.] 
+	These are reults for dataset 2 when noise is not added:
+	\begin{Verbatim}[frame=single]
+	dataset 2: 
+	smallest singular value for A = 0.082374
 
+	M =
+
+	    0.0087    0.0011   -0.0039    0.9986
+	    0.0001    0.0092    0.0005   -0.0520
+	    0.0000    0.0000    0.0000    0.0027
+
+
+	maximum reconstruction error =
+
+	    2.4272
+	\end{Verbatim}
+
+	These are reults for dataset 1 when noise is not added:
+	\begin{Verbatim}[frame=single]
+	dataset 1: 
+	smallest singular value for A = 1.7407e-15
+
+	M =
+
+	    0.2905    0.0532   -0.1866   -0.6283
+	   -0.0881    0.3264   -0.0881   -0.6010
+	    0.0002    0.0002    0.0002   -0.0021
+
+
+	maxerror =
+
+	   2.0293e-11
+	\end{Verbatim}
+
+	Now, Noise has been added to dataset1. These are the results obtained: 
+	\begin{Verbatim}[frame=single]
+	dataset 1: 
+	adding noise
+	smallest singular value of equation system = 0.13446
+
+	M =
+
+	    0.2728    0.0458   -0.1946   -0.6238
+	   -0.1055    0.3274   -0.0880   -0.6086
+	    0.0001    0.0002    0.0002   -0.0021
+
+
+	maximum reconstruction error =
+
+	   18.8168
+	\end{Verbatim}
+
+	Although $M$ looks more or less the same, reconstruction error increased quite a bit after noise is added.
+
+\end{itemize}
 \item In this exercise, you will estimate the homography between a pair of images using the method we studied in class. You should use the well-known SIFT algorithm to (1) detect salient feature points in both the images, and (2) determine pairs of matching points given the two point sets (`matching point pair' refers to points in the two images representing the same physical entity). The code for performing both these tasks is available at \url{http://www.cs.ubc.ca/~lowe/keypoints/}. We may study the internal details of how SIFT works in a separate set of lectures in class, but for this exercise, just assume this package is a magic blackbox. Now, given this set of matching pairs of points produced by the SIFT package, your job is to estimate the homography between the point sets. Write a routine of the form $\textrm{H = homography(im1,im2)}$ where $H$ is the homography matrix that will transform the first image. You will use data from the folder \url{http://www.cse.iitb.ac.in/~ajitvr/CS763_Spring2015/HW1/Homography/}. Do as follows:
 \begin{enumerate}
 \item Apply the homography transformation in the file `Hmodel.mat' to the image `goi1\_downsampled.jpg' using reverse warping to generate a warped image. Now estimate the homography that transforms the first image into its warped version. Apply the estimated transformation to the first image (using reverse warping) and display all three images side by side in your report. Also print the model and estimated homography matrices (make sure you normalize both so that $H(3,3) = 1$ in both cases). 
