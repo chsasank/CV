@@ -41,7 +41,51 @@
 
 \item \textit{In this exercise, we will prove the orthocenter theorem pertaining to the vanishing points $Q,R,S$ of three mutually perpendicular directions $OQ, OR, OS$, where $O$ is the pinhole (origin of camera coordinate system). Let the image plane be $Z = f$. Recall that two directions $v_1$ and $v_2$ are orthogonal if $v^T_1 v_2 = 0$. One can conclude that $OS$ is orthogonal to $OR-OQ$ (why?). Also the optical axis $Oo$ (where $o$ is the optical center) is orthogonal to $OR-OQ$ (why?). Hence the plane formed by triangle $OSo$ is orthogonal to $OR-OQ$ and hence line $oS$ is perpendicular to $OR-OQ = QR$ (why?). Likewise $oR$ and $oQ$ are perpendicular to $QS$ and $RS$. Hence we have proved that the altitudes of the triangle $QRS$ are concurrent at the point $o$. QED. Now, in this proof, I considered the three perpendicular lines to be passing through $O$. How will you modify the proof if the three lines did not pass through $O$? \textsf{[4 points]}}
 
-\item Prove that the vanishing points of three coplanar lines are collinear. \textsf{[2 points]}
+\item \textit{Prove that the vanishing points of three coplanar lines are collinear. \textsf{[2 points]}}
+\begin{itemize}
+	\item[Ans.] Consider lines 
+	\[
+		\frac{X-X_i}{l_i} = \frac{Y-Y_i}{m_i} = \frac{Z-Z_i}{n_i}, i = 1,2,3
+	\]
+	For these lines to be coplanar, it is neccesary that direction vectors of lines $v_i = (l_i,m_i,n_i)$ are coplanar or equivalently, linearly dependent. Thus,
+		\[
+		\begin{vmatrix}
+		l_1& m_1& n_1	\\
+		l_2& m_2& n_2	\\
+		l_3& m_3& n_3	\\	
+		\end{vmatrix}
+		  = 0
+		\]
+
+	Vanishing points of these lines can be computed as
+	\[
+		(x_i,y_i) = \lim_{t \to \infty} \left (\frac{X_i+l_it}{Z_i+n_it},\frac{Y_i+m_it}{Z_i+n_it}\right )
+				  = \left (\frac{l_i}{n_i}, \frac{m_i}{n_i}\right )
+	\]
+
+	These three points in $X-Y$ plane are collinear as 
+	\[
+		\begin{vmatrix}
+		x_1& y_1& 1	\\
+		x_2& y_2& 1	\\
+		x_3& y_3& 1 \\	
+		\end{vmatrix}
+		  = 
+		\begin{vmatrix}
+		l_1/n_1& m_1/n_1& 1	\\
+		l_2/n_2& m_2/n_2& 1	\\
+		l_3/n_3& m_3/n_3& 1	\\	
+		\end{vmatrix}
+		  =		
+		\begin{vmatrix}
+		l_1& m_1& n_1	\\
+		l_2& m_2& n_2	\\
+		l_3& m_3& n_3	\\	
+		\end{vmatrix}
+		  = 0
+	\]
+	thus, proving the required statement.
+\end{itemize}
 
 \item Consider a triangle (in 3D) whose side lengths are known to you. You capture an image of this triangle and mark out the positions of its three vertices in the image (assume all vertices were visible when you took the picture). Suppose, that you knew the 3D coordinates of exactly one vertex of the triangle, in the camera coordinate system. Explain how you will determine the 3D coordinates of the other two vertices, and write down the key equations (I do not expect you to solve the equations). Assume the pixel resolution of your camera to be 1 in both directions and the optical center to be $(0,0)$. Do not assume that you knew the focal length. \textsf{[4 points]}
 
