@@ -10,6 +10,8 @@
 \usepackage{fancyvrb}
 \usepackage{todonotes}
 \usepackage[margin=0.5in]{geometry}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
 \begin{document}
 \maketitle
 
@@ -87,7 +89,25 @@
 	thus, proving the required statement.
 \end{itemize}
 
-\item Consider a triangle (in 3D) whose side lengths are known to you. You capture an image of this triangle and mark out the positions of its three vertices in the image (assume all vertices were visible when you took the picture). Suppose, that you knew the 3D coordinates of exactly one vertex of the triangle, in the camera coordinate system. Explain how you will determine the 3D coordinates of the other two vertices, and write down the key equations (I do not expect you to solve the equations). Assume the pixel resolution of your camera to be 1 in both directions and the optical center to be $(0,0)$. Do not assume that you knew the focal length. \textsf{[4 points]}
+\item \textit{Consider a triangle (in 3D) whose side lengths are known to you. You capture an image of this triangle and mark out the positions of its three vertices in the image (assume all vertices were visible when you took the picture). Suppose, that you knew the 3D coordinates of exactly one vertex of the triangle, in the camera coordinate system. Explain how you will determine the 3D coordinates of the other two vertices, and write down the key equations (I do not expect you to solve the equations). Assume the pixel resolution of your camera to be 1 in both directions and the optical center to be $(0,0)$. Do not assume that you knew the focal length. \textsf{[4 points]}}
+\begin{itemize}
+	\item[Ans.]	Let $(X_i,Y_i,Z_i), i= 1,2,3$ be the coordinates of 3 points in camera coordinate system and suppose that coordinates of the first point is known. Correspoding points in the image $(x_i,y_i) = \left(\frac{fX_i}{Z_i},\frac{fY_i}{Z_i}\right), i = 1,2,3$ are also known. We also know the distance between points, $d_{ij}$ in the camera cordiate system
+	
+
+	Equation $(x_1,y_1) = \left(\frac{fX_1}{Z_1},\frac{fY_1}{Z_1}\right)$ gives the value of $f$. From the other two equations, we get 
+	\[
+	(X_i,Y_i,Z_i) = \left (\frac{x_iZ_i}{f},\frac{y_iZ_i}{f},Z_i\right ), i= 2,3
+	\]
+
+	From the three equations,
+	\begin{align}
+		d_{12} &= \norm{(X_1,Y_1,Z_1) - \left (\frac{x_2Z_2}{f},\frac{y_2Z_2}{f},Z_2 \right )} \\
+		d_{13} &= \norm{(X_1,Y_1,Z_1) - \left (\frac{x_3Z_3}{f},\frac{y_3Z_3}{f},Z_3 \right )} \\
+		d_{23} &= \norm{ \left (\frac{x_2Z_2}{f},\frac{y_2Z_2}{f},Z_2 \right )  -  \left (\frac{x_3Z_3}{f},\frac{y_3Z_3}{f},Z_3 \right )}
+	\end{align}
+	we can find unknowns $Z_2, Z_3$ unambiguously. This will give all the points $(X_i,Y_i,Z_i), i= 2,3$.
+\end{itemize}
+
 
 \item Consider two sets of corresponding points $\{\mathbf{p}_{1i} = (x_{1i},y_{1i})\}_{i=1}^{n}$ and $\{\mathbf{p}_{2i} = (x_{2i},y_{2i})\}_{i=1}^{n}$. Assume that each pair of corresponding points is related as follows: $\mathbf{p}_{2i} = \alpha \mathbf{R} \mathbf{p}_{1i} + \mathbf{t} + \mathbf{\eta}_i$ where $\mathbf{R}$ is an unknown rotation matrix, $\mathbf{t}$ is an unknown translation vector, $\alpha$ is an unknown scalar factor and $\mathbf{\eta}_i$ is a vector (unknown) representing noise. Explain how you will extend the method we studied in class for estimation of $\mathbf{R}$ to estimate $\alpha$ and $\mathbf{t}$ as well. Derive all necessary equations (do not merely guess the answers). \textsf{[5 points]}
 
