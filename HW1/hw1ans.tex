@@ -11,7 +11,7 @@
 \usepackage{todonotes}
 \usepackage[margin=0.5in]{geometry}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
-
+\newcommand{\tr}{\operatorname{trace}}
 \begin{document}
 \maketitle
 
@@ -105,11 +105,29 @@
 		d_{13} &= \norm{(X_1,Y_1,Z_1) - \left (\frac{x_3Z_3}{f},\frac{y_3Z_3}{f},Z_3 \right )} \\
 		d_{23} &= \norm{ \left (\frac{x_2Z_2}{f},\frac{y_2Z_2}{f},Z_2 \right )  -  \left (\frac{x_3Z_3}{f},\frac{y_3Z_3}{f},Z_3 \right )}
 	\end{align}
-	we can find unknowns $Z_2, Z_3$ unambiguously. This will give all the points $(X_i,Y_i,Z_i), i= 2,3$.
+	we can find unknowns $Z_2, Z_3$ unambiguously. This will give the points $(X_i,Y_i,Z_i), i= 2,3$.
 \end{itemize}
 
 
 \item Consider two sets of corresponding points $\{\mathbf{p}_{1i} = (x_{1i},y_{1i})\}_{i=1}^{n}$ and $\{\mathbf{p}_{2i} = (x_{2i},y_{2i})\}_{i=1}^{n}$. Assume that each pair of corresponding points is related as follows: $\mathbf{p}_{2i} = \alpha \mathbf{R} \mathbf{p}_{1i} + \mathbf{t} + \mathbf{\eta}_i$ where $\mathbf{R}$ is an unknown rotation matrix, $\mathbf{t}$ is an unknown translation vector, $\alpha$ is an unknown scalar factor and $\mathbf{\eta}_i$ is a vector (unknown) representing noise. Explain how you will extend the method we studied in class for estimation of $\mathbf{R}$ to estimate $\alpha$ and $\mathbf{t}$ as well. Derive all necessary equations (do not merely guess the answers). \textsf{[5 points]}
+\begin{itemize}
+	\item[Ans.] To find $\alpha,R,t$ we have to solve the optimization problem 
+	\[
+		\min_{\alpha,R,t} \sum_i{\norm{\mathbf{{p}_{2i}} - \alpha R \mathbf{p}_{1i} + \mathbf{t}}}^2
+		\textnormal{  s.t  } R^TR = I
+	\]
+	This can be rewritten as 
+	\[
+		\min_{\alpha,R,t} \sum_i{\norm{P_2 - \alpha R P_1 + \mathbf{t}}}_F^2
+		\textnormal{  s.t  } R^TR = I
+	\] where P1 ,P2 are matrices with  $\{\mathbf{p}_{1i} = (x_{1i},y_{1i})\}_{i=1}^{n}$ and $\{\mathbf{p}_{2i} = (x_{2i},y_{2i})\}_{i=1}^{n}$ as columns respectively.
+
+	Cost function 
+	\begin{align*}
+	J(\alpha,R,t) &= \tr( (P_2 - \alpha R P_1 + \mathbf{t})(P_2 - \alpha R P_1 + \mathbf{t}) ^T  )\\
+	&= \tr(P_2P_2^T -\alpha P_2P_1^TR^T + P_2t^T )
+	\end{align*}
+\end{itemize}
 
 \item You are given two datasets in the folder \url{http://www.cse.iitb.ac.in/~ajitvr/CS763_Spring2015/HW1/Calib_data}. The file names are Features2D\_dataset1.mat, Features3D\_dataset1.mat, Features2D\_dataset2.mat and \\ Features3D\_dataset2.mat. Each dataset contains (1) the XYZ coordinates of $N$ points marked out on a calibration object, and (2) the XY coordinates of their corresponding projections onto an image plane. Your job is to write a MATLAB program which will determine the $3 \times 4$ projection matrix $M$ such that $P_1 = MP$ where $P$ is a $4 \times N$ matrix containing the 3D object points (in homogeneous coordinates) and $P_1$ is a $3 \times N$ matrix containing the image points (in homogeneous coordinates). Use the SVD method and print out the matrix $M$ on screen (include it in your pdf file as well). Write a piece of code to verify that your computed $M$ is correct. For any one dataset, repeat the computation of the matrix $M$ after adding zero mean i.i.d. Gaussian noise of standard deviation $\sigma = 0.05 \times max_c$ (where $max_c$ is the maximum absolute value of the X,Y,Z coordinate) to every coordinate of $P$ and $P_1$ (leave the homogeneous coordinates unchanged). Comment on your results. Include these comments in your pdf file that you will submit. \textbf{Tips:} A mat file can be loaded into MATLAB memory using the `load' command. To add Gaussian noise, use the command `randn'. \textsf{[5 points]}
 \begin{itemize}
