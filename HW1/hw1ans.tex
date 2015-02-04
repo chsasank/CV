@@ -33,15 +33,33 @@
 	using this in the second part of the equation,
 	\begin{align}
 		\frac{r\sin{\theta}\sin{\phi}}{Y} &= \frac{c+r\cos{\theta}}{Z}\\
-		\frac{r\sin{\theta}}{\sqrt{X^2+Y^2}} &= \frac{c+r\cos{\theta}}{Z}
+		\frac{r\sin{\theta}}{\sqrt{X^2+Y^2}} &= \frac{c+r\cos{\theta}}{Z}		 
 	\end{align}
-	\todo[inline]{complete these equations}
+	Let $K=\sqrt{X^2+Y^2}$
 
-	Additional intrinsic parameters we find in such system are radius $r$ and centre $c$ of the screen sphere. 
+	\begin{align}
+	 Zr\sin{\theta}&=K(c+r\cos{\theta})\\
+	 r(Z\sin{\theta}-K\cos{\theta})&=Kc	  
+	\end{align}
+	Divide either side by $\sqrt{Z^2+K^2}=\sqrt{X^2+Y^2+Z^2}=R$.
+	We get $\sin(\theta-\cos^{-1}(\frac{Z}{R}))=\frac{Kc}{R}$. Hence,
+	$\theta=\cos^{-1}(\frac{Z}{R})+\sin^{-1}(\frac{Kc}{R})$
+	%\todo[inline]{complete these equations}
+We've thus determined $\theta$ and $\phi$ in terms of the r,c and X,Y,Z. Here, the other intrinsic parameters we are interested in are r,c. 
+	
 \end{itemize}
 
 
 \item \textit{In this exercise, we will prove the orthocenter theorem pertaining to the vanishing points $Q,R,S$ of three mutually perpendicular directions $OQ, OR, OS$, where $O$ is the pinhole (origin of camera coordinate system). Let the image plane be $Z = f$. Recall that two directions $v_1$ and $v_2$ are orthogonal if $v^T_1 v_2 = 0$. One can conclude that $OS$ is orthogonal to $OR-OQ$ (why?). Also the optical axis $Oo$ (where $o$ is the optical center) is orthogonal to $OR-OQ$ (why?). Hence the plane formed by triangle $OSo$ is orthogonal to $OR-OQ$ and hence line $oS$ is perpendicular to $OR-OQ = QR$ (why?). Likewise $oR$ and $oQ$ are perpendicular to $QS$ and $RS$. Hence we have proved that the altitudes of the triangle $QRS$ are concurrent at the point $o$. QED. Now, in this proof, I considered the three perpendicular lines to be passing through $O$. How will you modify the proof if the three lines did not pass through $O$? \textsf{[4 points]}}
+\item[Ans.] $OQ, OR, OS$ are mutually perpendicular lines.\newline
+Let $\bar{s},\bar{q},\bar{r}$ represent unit vectors along $OS, OQ,OR$. Therefore, $s(q-r)^{T}=0-0=0$.\newline
+Hence, OS is orthogonal to $OQ-OR$. $Q,R,S$ lie on image plane $Z=f$. As $Oo$ is orthogonal to this plane. Hence, $Oo$ is orthogonal with $QR$ ,i.e., $OQ-OR$.\newline
+Hence, $OS\perp(OQ-OR)$ and $Oo\perp(OQ-OR)$. $QR$ is normal to $OSo$ triangle plane.\newline
+Therefore, $oS$ is $\perp QR$. Similarly $oQ \perp SR$ and $oR \perp QS$. \newline
+$\implies$ $o$ is orthocentre of $\triangle QRS$ 
+
+Even if the lines don't pass through $O$, the lines connecting vanishing points $Q,R,S$ to $O$ will be parallel to the respective original lines and are still mutually perpendicular. Hence the proof redirects to the above case.    
+   
 
 \item \textit{Prove that the vanishing points of three coplanar lines are collinear. \textsf{[2 points]}}
 \begin{itemize}
