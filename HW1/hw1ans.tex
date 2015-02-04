@@ -118,16 +118,24 @@
 	\]
 	This can be rewritten as 
 	\[
-		\min_{\alpha,R,t} \sum_i{\norm{P_2 - \alpha R P_1 + \mathbf{t}}}_F^2
+		\min_{\alpha,R,t} \norm{P_2 - \alpha R P_1 + tj^T}_F^2
 		\textnormal{  s.t  } R^TR = I
-	\] where P1 ,P2 are matrices with  $\{\mathbf{p}_{1i} = (x_{1i},y_{1i})\}_{i=1}^{n}$ and $\{\mathbf{p}_{2i} = (x_{2i},y_{2i})\}_{i=1}^{n}$ as columns respectively.
+	\] where P1 ,P2 are matrices with  $\{\mathbf{p}_{1i} = (x_{1i},y_{1i})\}_{i=1}^{n}$ and $\{\mathbf{p}_{2i} = (x_{2i},y_{2i})\}_{i=1}^{n}$ as columns respectively and $j$ is a column vector with all elements $1$.
 
 	Cost function 
 	\begin{align*}
-	J(\alpha,R,t) &= \tr( (P_2 - \alpha R P_1 + \mathbf{t})(P_2 - \alpha R P_1 + \mathbf{t}) ^T  )\\
-	&= \tr(P_2P_2^T -\alpha P_2P_1^TR^T + P_2t^T )
+	J(\alpha,R,t) =& \tr( (P_2 - \alpha R P_1 + tj^t)^T(P_2 - \alpha R P_1 + tj^t)  )\\
+	=& \tr(P_2^TP_2 -\alpha P_2^T R P_1 + P_2^Ttj^t - \alpha P_1^TR^TP_2 + \alpha^2 P_1^TR^TRP_1 \\ 
+	 &   - \alpha P_1^TR^T tj^T + jt^TP_2 - \alpha jt^T R P_1 + jt^Ttj^t)\\
+	=& \tr(P_2^TP_2) + \alpha^2\tr(P_1^TP_1) + nt^Tt - 2 \alpha \tr(P_2^T R P_1 )\\
+	 & + 2\tr(jt^T(P_2-\alpha R P_1))
 	\end{align*}
+	
+	\todo[inline]{work out on paper}
+	
 \end{itemize}
+
+
 
 \item You are given two datasets in the folder \url{http://www.cse.iitb.ac.in/~ajitvr/CS763_Spring2015/HW1/Calib_data}. The file names are Features2D\_dataset1.mat, Features3D\_dataset1.mat, Features2D\_dataset2.mat and \\ Features3D\_dataset2.mat. Each dataset contains (1) the XYZ coordinates of $N$ points marked out on a calibration object, and (2) the XY coordinates of their corresponding projections onto an image plane. Your job is to write a MATLAB program which will determine the $3 \times 4$ projection matrix $M$ such that $P_1 = MP$ where $P$ is a $4 \times N$ matrix containing the 3D object points (in homogeneous coordinates) and $P_1$ is a $3 \times N$ matrix containing the image points (in homogeneous coordinates). Use the SVD method and print out the matrix $M$ on screen (include it in your pdf file as well). Write a piece of code to verify that your computed $M$ is correct. For any one dataset, repeat the computation of the matrix $M$ after adding zero mean i.i.d. Gaussian noise of standard deviation $\sigma = 0.05 \times max_c$ (where $max_c$ is the maximum absolute value of the X,Y,Z coordinate) to every coordinate of $P$ and $P_1$ (leave the homogeneous coordinates unchanged). Comment on your results. Include these comments in your pdf file that you will submit. \textbf{Tips:} A mat file can be loaded into MATLAB memory using the `load' command. To add Gaussian noise, use the command `randn'. \textsf{[5 points]}
 \begin{itemize}
