@@ -129,28 +129,82 @@ Even if the lines don't pass through $O$, the lines connecting vanishing points 
 
 \item Consider two sets of corresponding points $\{\mathbf{p}_{1i} = (x_{1i},y_{1i})\}_{i=1}^{n}$ and $\{\mathbf{p}_{2i} = (x_{2i},y_{2i})\}_{i=1}^{n}$. Assume that each pair of corresponding points is related as follows: $\mathbf{p}_{2i} = \alpha \mathbf{R} \mathbf{p}_{1i} + \mathbf{t} + \mathbf{\eta}_i$ where $\mathbf{R}$ is an unknown rotation matrix, $\mathbf{t}$ is an unknown translation vector, $\alpha$ is an unknown scalar factor and $\mathbf{\eta}_i$ is a vector (unknown) representing noise. Explain how you will extend the method we studied in class for estimation of $\mathbf{R}$ to estimate $\alpha$ and $\mathbf{t}$ as well. Derive all necessary equations (do not merely guess the answers). \textsf{[5 points]}
 \begin{itemize}
-	\item[Ans.] To find $\alpha,R,t$ we have to solve the optimization problem 
-	\[
-		\min_{\alpha,R,t} \sum_i{\norm{\mathbf{{p}_{2i}} - \alpha R \mathbf{p}_{1i} + \mathbf{t}}}^2
-		\textnormal{  s.t  } R^TR = I
-	\]
-	This can be rewritten as 
-	\[
-		\min_{\alpha,R,t} \norm{P_2 - \alpha R P_1 + tj^T}_F^2
-		\textnormal{  s.t  } R^TR = I
-	\] where P1 ,P2 are matrices with  $\{\mathbf{p}_{1i} = (x_{1i},y_{1i})\}_{i=1}^{n}$ and $\{\mathbf{p}_{2i} = (x_{2i},y_{2i})\}_{i=1}^{n}$ as columns respectively and $j$ is a column vector with all elements $1$.
+\item[Ans.] Let \[ P=
+		\begin{bmatrix}
+		x_{11} & x_{12} & ... & x_{1n}\\
+		y_{11} & y_{12} & ... & y_{1n}\\	
+		\end{bmatrix}		  
+		\]	
+		and
+		\[ Q=
+		\begin{bmatrix}
+		x_{21} & x_{22} & ... & x_{2n}\\
+		y_{21} & y_{22} & ... & y_{2n}\\	
+		\end{bmatrix}		  
+		\]
+		We need to solve the optimization problem $Q=\alpha RP+T+N$ where \[ T=
+		\begin{bmatrix}
+		t_x & t_x & ... & t_x\\
+		t_y & t_y & ... & t_y\\	
+		\end{bmatrix}		  
+		\] 
+		is a repetition matrix of the translation column vector and $N$ is the noise matrix.\newline
+Rotation and translation don't effect the standard deviation of the set of salient points but only scaling does effect. Hence, we can determine the unknown $\alpha$ by ratio of standard deviation of the two sets of points. We define the single dimensional SD as follows
+\begin{equation}
+SD1=\sqrt{\frac{(x_{11}-\bar{x_1})^2+(y_{11}-\bar{y_1})^2+...}{n}}
+\end{equation}    
+	
+\begin{equation}
+SD2=\sqrt{\frac{(x_{21}-\bar{x_2})^2+(y_{21}-\bar{y_2})^2+...}{n}}
+\end{equation}		
+where $\bar{x_i}=\frac{\sum\limits_{j=1}^n x_{ij}}{n}$ and $\bar{y_i}=\frac{\sum\limits_{j=1}^n y_{ij}}{n}$ 
 
-	Cost function 
-	\begin{align*}
-	J(\alpha,R,t) =& \tr( (P_2 - \alpha R P_1 + tj^t)^T(P_2 - \alpha R P_1 + tj^t)  )\\
-	=& \tr(P_2^TP_2 -\alpha P_2^T R P_1 + P_2^Ttj^t - \alpha P_1^TR^TP_2 + \alpha^2 P_1^TR^TRP_1 \\ 
-	 &   - \alpha P_1^TR^T tj^T + jt^TP_2 - \alpha jt^T R P_1 + jt^Ttj^t)\\
-	=& \tr(P_2^TP_2) + \alpha^2\tr(P_1^TP_1) + nt^Tt - 2 \alpha \tr(P_2^T R P_1 )\\
-	 & + 2\tr(jt^T(P_2-\alpha R P_1))
-	\end{align*}
-	
-	\todo[inline]{work out on paper}
-	
+We can thus obtain $\alpha$ as follows 
+\begin{equation}
+\alpha=\frac{SD2}{SD1}
+\end{equation} 
+
+Define \[ \bar{p}=
+		\begin{bmatrix}
+		\bar{x_1}\\
+		\bar{y_1}
+		\end{bmatrix}		  
+		, \bar{q}=
+		\begin{bmatrix}
+		\bar{x_2}\\
+		\bar{y_2}
+		\end{bmatrix}		  
+		\] 
+		and
+		\[ \mu_p=
+		\begin{bmatrix}
+		\bar{x_1} & \bar{x_1} & ...\\
+		\bar{y_1} & \bar{y_1} & ...
+		\end{bmatrix}		  
+		, \mu_q=
+		\begin{bmatrix}
+		\bar{x_2} & \bar{x_2} & ...\\
+		\bar{y_2} & \bar{y_2} & ...
+		\end{bmatrix}		  
+		\] 
+Now, under the transformation $\alpha RP+T+N$, we've 
+\begin{equation}
+\bar{q}=\alpha R\bar{p} + \begin{bmatrix}
+        t_x\\
+        t_y
+        \end{bmatrix}=\alpha R\mu_p + \bar{t}
+\end{equation}
+Here, the noise is assumed to be zero mean and hence doesn't appear in avg. 
+        Hence, $\bar{t}=\bar{q}-\alpha R\bar{p}$. Substituting this back in the transformation, we get 
+        \begin{equation}
+        Q= \alpha RP+ \mu_q-\alpha R\mu_p
+        \end{equation} 
+        \begin{equation}
+        Q-\mu_q= \alpha R(P -\mu_p)
+        \end{equation} 
+              	
+Let $Q^{'}=Q-\mu_q$ and $P^{'}=P -\mu_p$. We now have $Q^{'}=R(\alpha P^{'})$. This is similar to the procrustes problem with $\bar{t} =0$ that was discussed in the handout. We can determine $R$ from there and $t$ from the equation $\bar{t}=\bar{q}-\alpha R\bar{p}$.
+        We thus have $\alpha, R , t$.  
 \end{itemize}
 
 
