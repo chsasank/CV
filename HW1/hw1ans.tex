@@ -135,7 +135,6 @@ Even if the lines don't pass through $O$, the lines connecting vanishing points 
 
 \item Consider two sets of corresponding points $\{\mathbf{p}_{1i} = (x_{1i},y_{1i})\}_{i=1}^{n}$ and $\{\mathbf{p}_{2i} = (x_{2i},y_{2i})\}_{i=1}^{n}$. Assume that each pair of corresponding points is related as follows: $\mathbf{p}_{2i} = \alpha \mathbf{R} \mathbf{p}_{1i} + \mathbf{t} + \mathbf{\eta}_i$ where $\mathbf{R}$ is an unknown rotation matrix, $\mathbf{t}$ is an unknown translation vector, $\alpha$ is an unknown scalar factor and $\mathbf{\eta}_i$ is a vector (unknown) representing noise. Explain how you will extend the method we studied in class for estimation of $\mathbf{R}$ to estimate $\alpha$ and $\mathbf{t}$ as well. Derive all necessary equations (do not merely guess the answers). \textsf{[5 points]}
 \begin{itemize}
-\item[Ans.]
 \item[Ans.] To find $\alpha,R,t$ we have to solve the optimization problem 
 	\[
 		\min_{\alpha,R,t} J(\alpha,R,t)= \min_{\alpha,R,t} \sum_i{\norm{\mathbf{{p}_{2i}} - \alpha R \mathbf{p}_{1i} - \mathbf{t}}}^2
@@ -158,9 +157,18 @@ Even if the lines don't pass through $O$, the lines connecting vanishing points 
 		This is similar to the Procrustes problem except for the unknown factor $\alpha$. By performing SVD, we can write  $\mathbf{\bar{P_1}}\mathbf{\bar{P_2}^T}=\mathbf{U^{'}}\mathbf{S^{'}}\mathbf{V^{'^{T}}}$. Hence, $(\alpha\mathbf{\bar{P_1}})\mathbf{\bar{P_2}^T}=\mathbf{U^{'}}(\alpha\mathbf{S^{'}})\mathbf{V^{'^{T}}}$. Hence, the factor $\alpha$ doesn't effect the orthonormal matrices $\mathbf{U^{'}},\mathbf{V^{'}}$. Hence, R can be determined as a normal Procrustes problem as $R=\mathbf{V^{'}}\mathbf{U^{'^{T}}}$.\newline
 		We need to now find $\alpha$.Since, we know R, we define a new matrix $\mathbf{{P_1}^{'}} = R\mathbf{\bar{P}_1}$. Hence, cost function transforms to 
 		\begin{equation}		
-	\norm{\mathbf{\bar{P_2}} - \alpha  \mathbf{{P_1}^{'}}}_F^2
+	\norm{\mathbf{\bar{P_2}} - \alpha  \mathbf{{P_1}^{'}}}_F^2=\sum_i{\norm{\mathbf{{p}_{2i}}-\mathbf{\bar{p_2}} - \alpha R (\mathbf{p}_{1i}-\mathbf{\bar{p_1}})}}^2
 				\end{equation}
+Denote $\mathbf{{p}_{2i}}-\mathbf{\bar{p_2}}$ by $\mathbf{{p^{'}}_{2i}}$ and $R(\mathbf{{p}_{1i}}-\mathbf{\bar{p_1}})$ by $\mathbf{{p^{'}}_{1i}}$. 
+\begin{equation}
+J(\alpha,R,t)=\sum_i{\norm{\mathbf{{p^{'}}_{2i}} - \alpha\mathbf{{p^{'}}_{1i}}}}^2=\sum_i(\mathbf{{p^{'}}_{2i}} - \alpha\mathbf{{p^{'}}_{1i}})^T(\mathbf{{p^{'}}_{2i}} - \alpha\mathbf{{p^{'}}_{1i}})=K_1 \alpha^2-K_2 \alpha+K_3
+\end{equation}
 
+where $K_1=\sum_i \mathbf{{p^{'}}_{1i}}^T\mathbf{{p^{'}}_{1i}}$, $K_2=\sum_i \mathbf{{p^{'}}_{1i}}^T\mathbf{{p^{'}}_{2i}}+\sum_i \mathbf{{p^{'}}_{2i}}^T\mathbf{{p^{'}}_{1i}}=2.\sum_i \mathbf{{p^{'}}_{1i}}^T\mathbf{{p^{'}}_{2i}}$ and $K_3=\sum_i \mathbf{{p^{'}}_{2i}}^T\mathbf{{p^{'}}_{2i}}$\newline
+Hence, to minimize this quadratic, we get \begin{equation}
+\alpha= \frac{K_2}{2.K_1}=\frac{\sum_i \mathbf{{p^{'}}_{1i}}^T\mathbf{{p^{'}}_{2i}}}{\sum_i \mathbf{{p^{'}}_{1i}}^T\mathbf{{p^{'}}_{1i}}}
+\end{equation}
+Having obtained $R$ and $\alpha$ we can get $t$ from eqn. (12) given above.
 \end{itemize}
 \item You are given two datasets in the folder \url{http://www.cse.iitb.ac.in/~ajitvr/CS763_Spring2015/HW1/Calib_data}. The file names are Features2D\_dataset1.mat, Features3D\_dataset1.mat, Features2D\_dataset2.mat and \\ Features3D\_dataset2.mat. Each dataset contains (1) the XYZ coordinates of $N$ points marked out on a calibration object, and (2) the XY coordinates of their corresponding projections onto an image plane. Your job is to write a MATLAB program which will determine the $3 \times 4$ projection matrix $M$ such that $P_1 = MP$ where $P$ is a $4 \times N$ matrix containing the 3D object points (in homogeneous coordinates) and $P_1$ is a $3 \times N$ matrix containing the image points (in homogeneous coordinates). Use the SVD method and print out the matrix $M$ on screen (include it in your pdf file as well). Write a piece of code to verify that your computed $M$ is correct. For any one dataset, repeat the computation of the matrix $M$ after adding zero mean i.i.d. Gaussian noise of standard deviation $\sigma = 0.05 \times max_c$ (where $max_c$ is the maximum absolute value of the X,Y,Z coordinate) to every coordinate of $P$ and $P_1$ (leave the homogeneous coordinates unchanged). Comment on your results. Include these comments in your pdf file that you will submit. \textbf{Tips:} A mat file can be loaded into MATLAB memory using the `load' command. To add Gaussian noise, use the command `randn'. \textsf{[5 points]}
 \begin{itemize}
