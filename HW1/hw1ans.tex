@@ -197,13 +197,13 @@ Now, under the transformation $\alpha RP+T+N$, we've
 Here, the noise is assumed to be zero mean and hence doesn't appear in avg. 
         Hence, $\bar{t}=\bar{q}-\alpha R\bar{p}$. Substituting this back in the transformation, we get 
         \begin{equation}
-        Q= \alpha RP+ \mu_q-\alpha R\mu_p
+        Q= \alpha RP+ \mu_q-\alpha R\mu_p+N
         \end{equation} 
         \begin{equation}
-        Q-\mu_q= \alpha R(P -\mu_p)
+        Q-\mu_q= \alpha R(P -\mu_p)+N
         \end{equation} 
               	
-Let $Q^{'}=Q-\mu_q$ and $P^{'}=P -\mu_p$. We now have $Q^{'}=R(\alpha P^{'})$. This is similar to the procrustes problem with $\bar{t} =0$ that was discussed in the handout. We can determine $R$ from there and $t$ from the equation $\bar{t}=\bar{q}-\alpha R\bar{p}$.
+Let $Q^{'}=Q-\mu_q$ and $P^{'}=P -\mu_p$. We now have $Q^{'}=R(\alpha P^{'})+N$. This is similar to the procrustes problem with $\bar{t} =0$ that was discussed in the handout. We can determine $R$ from there and $t$ from the equation $\bar{t}=\bar{q}-\alpha R\bar{p}$.
         We thus have $\alpha, R , t$.  
 \end{itemize}
 
