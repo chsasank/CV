@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.4)  5 FEB 2015 00:18
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.4)  5 FEB 2015 07:48
 entering extended mode
 **hw1ans.tex
 
@@ -716,7 +716,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 279.
 Here is how much of TeX's memory you used:
  17018 strings out of 493921
  314612 string characters out of 3147280
- 388214 words of memory out of 3000000
+ 388215 words of memory out of 3000000
  19995 multiletter control sequences out of 15000+200000
  13570 words of font info for 51 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
@@ -739,7 +739,7 @@ s/type1/public/amsfonts/cm/cmssi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
 amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
 cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10
 .pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on hw1ans.pdf (5 pages, 255606 bytes).
+Output written on hw1ans.pdf (5 pages, 255625 bytes).
 PDF statistics:
  146 PDF objects out of 1000 (max. 8388607)
  32 named destinations out of 1000 (max. 500000)
