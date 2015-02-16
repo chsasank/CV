@@ -1,0 +1,21 @@
+
+Hmodel =
+
+    1.1283    0.0385  -57.1714
+    0.0702    1.0931  -40.8860
+    0.0005    0.0002    1.0000
+
+Finding keypoints... 
+1146 keypoints found. 
+Finding keypoints... 
+975 keypoints found. 
+Found 398 matches.
+smallest singular value for A = 1.9226
+
+Hest =
+
+    1.2798    0.2091  -81.2863
+    0.0727    1.3585  -86.9020
+    0.0004    0.0010    1.0000
+
+>> 

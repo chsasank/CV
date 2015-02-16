@@ -9,9 +9,13 @@
 \usepackage{ulem}
 \usepackage{fancyvrb}
 \usepackage{todonotes}
+
 \usepackage[margin=0.5in]{geometry}
+\usepackage{subfig}
+
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \newcommand{\tr}{\operatorname{trace}}
+
 \begin{document}
 \maketitle
 
@@ -57,6 +61,7 @@ where $\theta=\cos^{-1}(\frac{Z}{\sqrt{X^2+Y^2+Z^2}})+\sin^{-1}(\frac{Kc}{\sqrt{
 
 
 \item \textit{In this exercise, we will prove the orthocenter theorem pertaining to the vanishing points $Q,R,S$ of three mutually perpendicular directions $OQ, OR, OS$, where $O$ is the pinhole (origin of camera coordinate system). Let the image plane be $Z = f$. Recall that two directions $v_1$ and $v_2$ are orthogonal if $v^T_1 v_2 = 0$. One can conclude that $OS$ is orthogonal to $OR-OQ$ (why?). Also the optical axis $Oo$ (where $o$ is the optical center) is orthogonal to $OR-OQ$ (why?). Hence the plane formed by triangle $OSo$ is orthogonal to $OR-OQ$ and hence line $oS$ is perpendicular to $OR-OQ = QR$ (why?). Likewise $oR$ and $oQ$ are perpendicular to $QS$ and $RS$. Hence we have proved that the altitudes of the triangle $QRS$ are concurrent at the point $o$. QED. Now, in this proof, I considered the three perpendicular lines to be passing through $O$. How will you modify the proof if the three lines did not pass through $O$? \textsf{[4 points]}}
+\begin{itemize}
 \item[Ans.] $OQ, OR, OS$ are mutually perpendicular lines.\newline
 Let $\bar{s},\bar{q},\bar{r}$ represent unit vectors along $OS, OQ,OR$. Therefore, $s(q-r)^{T}=0-0=0$.\newline
 Hence, OS is orthogonal to $OQ-OR$. $Q,R,S$ lie on image plane $Z=f$. As $Oo$ is orthogonal to this plane. Hence, $Oo$ is orthogonal with $QR$ ,i.e., $OQ-OR$.\newline
@@ -65,7 +70,8 @@ Therefore, $oS$ is $\perp QR$. Similarly $oQ \perp SR$ and $oR \perp QS$. \newli
 $\implies$ $o$ is orthocentre of $\triangle QRS$ 
 
 Even if the lines don't pass through $O$, the lines connecting vanishing points $Q,R,S$ to $O$ will be parallel to the respective original lines and are still mutually perpendicular. Hence the proof redirects to the above case.    
-   
+\end{itemize}
+
 
 \item \textit{Prove that the vanishing points of three coplanar lines are collinear. \textsf{[2 points]}}
 \begin{itemize}
@@ -236,5 +242,56 @@ Having obtained $R$ and $\alpha$ we can get $t$ from eqn. (12) given above.
 \end{enumerate}
 \textbf{Note:} You may not get perfect answers for the motion estimate due to errors in SIFT, but you should get a reasonable alignment. While warping, crop off the portions of the image that do not fit into the original size. You may use the nearest neighbor method for interpolation during warping. I encourage you to try out this experiment on images of planar surfaces from different viewpoints that you should take with a real camera. You will notice that the warp estimate will often be very wrong due to several incorrect matches (called as `outliers'). In a subsequent assignment, we will implement a method that will be reasonably immune to these outliers. At that point, we will attempt to mosaic together two or more pictures as well. \textsf{[6 points]}
 }
+
+\begin{itemize}
+\item[Ans.] (a) 
+Hest is the estimated homography matrix using SIFT.
+\begin{Verbatim}
+Hmodel =
+
+    1.1283    0.0385  -57.1714
+    0.0702    1.0931  -40.8860
+    0.0005    0.0002    1.0000
+
+
+Hest =
+
+    1.2798    0.2091  -81.2863
+    0.0727    1.3585  -86.9020
+    0.0004    0.0010    1.0000
+\end{Verbatim}
+
+\begin{figure}[h]
+    \centering
+    \subfloat[goi1\_downsampled.jpg]{\includegraphics[width=2.5in]{goi1_downsampled.jpg}}%
+    \qquad
+    \subfloat[Warped using Hmodel]{{\includegraphics[width=2.5in]{goi1_downsampled_H.jpg} }}%
+	\qquad
+	\subfloat[Warped using Hest]{{\includegraphics[width=2.5in]{goi1_downsampled_H_est.jpg} }}%
+	\caption{Part - a}
+\end{figure}
+
+(b) Estimated homography  matrix between goi1\_downsampled.jpg and goi2\_downsampled.jpg is 
+\begin{verbatim}
+Hest =
+
+    0.8910   -0.0359   49.5626
+   -0.0650    0.9279   34.1957
+   -0.0002   -0.0001    1.0000
+\end{verbatim}
+
+\begin{figure}[h]
+    \centering
+    \subfloat[goi1\_downsampled.jpg]{\includegraphics[width=2.5in]{goi1_downsampled.jpg}}%
+    \qquad
+    \subfloat[goi1\_downsampled.jpg]{{\includegraphics[width=2.5in]{goi2_downsampled.jpg} }}%
+	\qquad
+	\subfloat[goi1\_downsampled.jpg warped using Hest]{{\includegraphics[width=2.5in]{goi2_downsampled_H_est.jpg} }}%
+	\caption{Part - b}
+\end{figure}
+
+
+\end{itemize}
+
 \end{enumerate}
 \end{document}
