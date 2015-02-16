@@ -1,5 +1,6 @@
 # CV
-Assignments from the course
+Assignments & Projects from the course Computer Vision at IITB.
+
+Done in team of 3 comprising of Sasank, Tharun & Rajeev.
 
 
-These are the solutions for CV course's assignments. Code is in floders.
