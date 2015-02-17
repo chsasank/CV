@@ -1,0 +1,590 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.2.17)  17 FEB 2015 19:15
+entering extended mode
+**hw2_ans.tex
+("C:\Users\Rajeev P\Desktop\CV\HW2\hw2_ans.tex"
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2013-05-26, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
+ lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
+german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
+an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
+ishmax, welsh, loaded.
+("C:\Program Files\latex\tex\latex\base\article.cls"
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+("C:\Program Files\latex\tex\latex\base\size11.clo"
+File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Program Files\latex\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files\latex\tex\latex\amsmath\amstext.sty"
+Package: amstext 2000/06/29 v2.01
+
+("C:\Program Files\latex\tex\latex\amsmath\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks14
+\ex@=\dimen103
+))
+("C:\Program Files\latex\tex\latex\amsmath\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen104
+)
+("C:\Program Files\latex\tex\latex\amsmath\amsopn.sty"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count87
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count88
+\leftroot@=\count89
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count90
+\DOTSCASE@=\count91
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count92
+\c@MaxMatrixCols=\count93
+\dotsspace@=\muskip10
+\c@parentequation=\count94
+\dspbrk@lvl=\count95
+\tag@help=\toks15
+\row@=\count96
+\column@=\count97
+\maxfields@=\count98
+\andhelp@=\toks16
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks17
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+("C:\Program Files\latex\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+("C:\Program Files\latex\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+("C:\Program Files\latex\tex\latex\geometry\geometry.sty"
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+("C:\Program Files\latex\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks19
+)
+("C:\Program Files\latex\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+("C:\Program Files\latex\tex\generic\oberdiek\ifvtex.sty"
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+("C:\Program Files\latex\tex\generic\ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count99
+\Gm@cntv=\count100
+\c@Gm@tempcnt=\count101
+\Gm@bindingoffset=\dimen112
+\Gm@wd@mp=\dimen113
+\Gm@odd@mp=\dimen114
+\Gm@even@mp=\dimen115
+\Gm@layoutwidth=\dimen116
+\Gm@layoutheight=\dimen117
+\Gm@layouthoffset=\dimen118
+\Gm@layoutvoffset=\dimen119
+\Gm@dimlist=\toks20
+
+("C:\Program Files\latex\tex\latex\geometry\geometry.cfg"))
+("C:\Users\Rajeev P\Desktop\CV\HW2\hw2_ans.aux")
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(36.135pt, 542.02501pt, 36.135pt)
+* v-part:(T,H,B)=(36.135pt, 722.7pt, 36.135pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=542.02501pt
+* \textheight=722.7pt
+* \oddsidemargin=-36.135pt
+* \evensidemargin=-36.135pt
+* \topmargin=-73.135pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=11.0pt
+* \footskip=30.0pt
+* \marginparwidth=59.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 13.
+("C:\Program Files\latex\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 13.
+
+("C:\Program Files\latex\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Underfull \hbox (badness 10000) in paragraph at lines 15--19
+
+ []
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <10.95> not available
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 42.
+
+[1
+
+{C:/Users/Rajeev P/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+[2]
+! Misplaced alignment tab character &.
+\reserved@a ->&
+                & &
+l.94 \end{eqnarray}
+                   
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+\reserved@a ->& &
+                  &
+l.94 \end{eqnarray}
+                   
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+\reserved@a ->& & &
+                   
+l.94 \end{eqnarray}
+                   
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced \cr.
+\@@eqncr ...l \@eqnswtrue \global \@eqcnt \z@ \cr 
+                                                  
+l.94 \end{eqnarray}
+                   
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Extra }, or forgotten $.
+\endeqnarray ->\@@eqncr \egroup 
+                                \global \advance \c@equation \m@ne $$\@ignor...
+l.94 \end{eqnarray}
+                   
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+! LaTeX Error: \begin{equation*} on input line 92 ended by \end{eqnarray}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.94 \end{eqnarray}
+                   
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.95 \]
+       
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! You can't use `\eqno' in horizontal mode.
+\endmathdisplay@a ...\df@tag \@empty \else \veqno 
+                                                  \alt@tag \df@tag \fi \ifx ...
+l.95 \]
+       
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+
+! LaTeX Error: \begin{itemize} on input line 74 ended by \end{equation*}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.95 \]
+       
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.95 \]
+       
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Display math should end with $$.
+<to be read again> 
+                   \endgroup 
+l.95 \]
+       
+The `$' that I just saw supposedly matches a previous `$$'.
+So I shall assume that you typed `$$' both times.
+
+
+! LaTeX Error: \begin{enumerate} on input line 20 ended by \end{itemize}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.96 \end{itemize}
+                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.98 \item Y
+            ou know that both the Horn-Shunck as well as Lucas-Kanade method...
+
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.100 \item I
+             n this assignment, you will build up on the previous assignment...
+
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Undefined control sequence.
+l.100 ...tion of homographies is available at \url
+                                                  {http://www.csse.uwa.edu.a...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.100 ...d work with the images in the folder \url
+                                                  {http:\\www.cse.iitb.ac.in...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.100 ...{http:\\www.cse.iitb.ac.in/~ajitvr/CS763_
+                                                  Spring2015/HW2/Homography}...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+l.100 .../~ajitvr/CS763_Spring2015/HW2/Homography}
+                                                   and also on any one pair ...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.101 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (558.47304pt too wide) in paragraph at lines 100--101
+\OT1/cmr/m/n/10.95 www.cse.iitb.ac.in/ ajitvr/CS763$[]\OML/cmm/m/it/10.95 pring
+\OT1/cmr/m/n/10.95 2015\OML/cmm/m/it/10.95 =HW\OT1/cmr/m/n/10.95 2\OML/cmm/m/it
+/10.95 =Homographyandalsoonanyonepairofpicturesofanapproximatelyplanarscenetake
+nwitharealcamera:\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 Youshouldacquirethesei
+magesyourselfandmakesuretheyhavesmallnon \OMS/cmsy/m/n/10.95  $
+ []
+
+
+Overfull \hbox (1692.87488pt too wide) in paragraph at lines 100--101
+$\OML/cmm/m/it/10.95 overlappingareastomakethismoreinteresting:\OT1/cmr/m/n/10.
+95 )\OML/cmm/m/it/10.95 Also; ineachcase; youshouldwarponeoftheimagessothatital
+ignswiththeotherone:However; thistimeyoushould[]croptheimagesothatnopartsofeith
+erimagearedeleted; andatruemosaicmaybeobtained:WhileyoushouldusetheRanSaCcodeas
+is; Irecommendsteppingthroughittogetafeelforwhatisgoingoninside:Displayallthere
+sultingmosaicsinyourreport:Statethenumberofiterationsandallthresholdsyouused:[]
+$ 
+ []
+
+
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.102 \item H
+             ere we will register a flash and a no-flash image pair using th...
+
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Undefined control sequence.
+l.102 ...d the flash and no-flash images from \url
+                                                  {http:\\www.cse.iitb.ac.in...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.102 ...{http:\\www.cse.iitb.ac.in/~ajitvr/CS763_
+                                                  Spring2015/HW2/ImageReg}. ...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+l.102 ...in/~ajitvr/CS763_Spring2015/HW2/ImageReg}
+                                                  . Convert both images to \...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Undefined control sequence.
+l.102 ...2/ImageReg}. Convert both images to \sout
+                                                  {color} gray-scale. The fl...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.102 ...te-force search to find the angle $\theta
+                                                  $ and translation $t_x$ to...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (78.98067pt too wide) in paragraph at lines 102--103
+\OT1/cmr/m/n/10.95 www.cse.iitb.ac.in/ ajitvr/CS763$[]\OML/cmm/m/it/10.95 pring
+\OT1/cmr/m/n/10.95 2015\OML/cmm/m/it/10.95 =HW\OT1/cmr/m/n/10.95 2\OML/cmm/m/it
+/10.95 =ImageReg:Convertbothimagesto[]gray \OMS/cmsy/m/n/10.95   \OML/cmm/m/it/
+10.95 scale:Theflashimageandtheno \OMS/cmsy/m/n/10.95  $
+ []
+
+
+Overfull \hbox (40.40924pt too wide) in paragraph at lines 102--103
+$\OML/cmm/m/it/10.95 flashimagehavedifferentimageintensitiesatmanyplaces; andth
+eno \OMS/cmsy/m/n/10.95   \OML/cmm/m/it/10.95 flashimageisdistinctlynoisier:Rot
+atethegivenno \OMS/cmsy/m/n/10.95  $
+ []
+
+
+Overfull \hbox (121.14395pt too wide) in paragraph at lines 102--103
+$\OML/cmm/m/it/10.95 flashimagecounter \OMS/cmsy/m/n/10.95   \OML/cmm/m/it/10.9
+5 clockwiseby\OT1/cmr/m/n/10.95 28\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 5\OML
+/cmm/m/it/10.95 degrees; translateitby \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95
+ 6\OML/cmm/m/it/10.95 pixelsintheXdirection; andaddGaussiannoiseofstandarddevia
+tion\OT1/cmr/m/n/10.95 5(\OML/cmm/m/it/10.95 ona\OT1/cmr/m/n/10.95 0 \OMS/cmsy/
+m/n/10.95  $
+ []
+
+
+Overfull \hbox (244.3843pt too wide) in paragraph at lines 102--103
+$\OT1/cmr/m/n/10.95 255\OML/cmm/m/it/10.95 scale\OT1/cmr/m/n/10.95 )\OML/cmm/m/
+it/10.95 :Notethattherotationmustbeappliedaboutthecenteroftheimage:Setnegative 
+\OMS/cmsy/m/n/10.95   \OML/cmm/m/it/10.95 valuedpixelsto\OT1/cmr/m/n/10.95 0\OM
+L/cmm/m/it/10.95 andpixelswithvaluemorethan\OT1/cmr/m/n/10.95 255\OML/cmm/m/it/
+10.95 to\OT1/cmr/m/n/10.95 255\OML/cmm/m/it/10.95 :Nowperformabrute \OMS/cmsy/m
+/n/10.95  $
+ []
+
+
+! LaTeX Error: \begin{document} ended by \end{enumerate}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.104 \end{enumerate}
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.104 \end{enumerate}
+                     
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.104 \end{enumerate}
+                     
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Extra \endgroup.
+<recently read> \endgroup 
+                          
+l.104 \end{enumerate}
+                     
+Things are pretty mixed up, but I think the worst is over.
+
+[3] ("C:\Users\Rajeev P\Desktop\CV\HW2\hw2_ans.aux") ) 
+Here is how much of TeX's memory you used:
+ 1660 strings out of 493921
+ 20372 string characters out of 3149278
+ 83478 words of memory out of 3000000
+ 4966 multiletter control sequences out of 15000+200000
+ 12748 words of font info for 47 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 27i,9n,32p,1532b,251s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/latex/f
+onts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/latex/fonts/type1/pu
+blic/amsfonts/cm/cmex10.pfb><C:/Program Files/latex/fonts/type1/public/amsfonts
+/cm/cmmi10.pfb><C:/Program Files/latex/fonts/type1/public/amsfonts/cm/cmmi8.pfb
+><C:/Program Files/latex/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program F
+iles/latex/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/latex/fon
+ts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/latex/fonts/type1/publi
+c/amsfonts/cm/cmr6.pfb><C:/Program Files/latex/fonts/type1/public/amsfonts/cm/c
+mr8.pfb><C:/Program Files/latex/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/P
+rogram Files/latex/fonts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Program Files
+/latex/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/latex/fonts/
+type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/latex/fonts/type1/public/a
+msfonts/cm/cmti10.pfb>
+Output written on hw2_ans.pdf (3 pages, 182161 bytes).
+PDF statistics:
+ 68 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
