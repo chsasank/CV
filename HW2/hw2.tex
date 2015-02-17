@@ -20,9 +20,6 @@
 \begin{enumerate}
 \item Prove that collinearity of points is preserved under perspective projection. \textsf{[4 points]}
 
-\begin{itemise}
-\item Let
-
 \item We have defined the concept of the Shannon entropy in class. Given a discrete random variable $X$ having probability mass function $P(X) = (p_1, p_2, ..., p_N)$, prove that $H(X) \geq 0$ where $H(X)$ is the Shannon entropy of $X$. Recall that $H(X) = -\sum\limits_{i=1}^N p_i \log p_i$ and that $\sum\limits_{i=1}^N p_i = 1$ and $\forall i, 0 \leq p_i \leq 1$. Also prove that a uniform distribution (\textit{ie} $\forall i, \textrm{ } p_i = \frac{1}{N}$) maximizes the Shannon entropy. To this end, find a stationary point of $J(X) = H(X) - \lambda (\sum\limits_{i=1}^N p_i - 1)$ where $\lambda$ is a Lagrange multiplier to impose the hard constraint that the probabilities all sum up to 1.  \textsf{[2+4 = 6 points]}
 
 \item This is a straightforward exercise to make sure you understand the basic update equations in the Horn-Shunck algorithm for optical flow. As seen in class, we seek to minimize the quantity $J(\{(u_{ij},v_{ij})\})$ w.r.t. the optical flow vectors $(u_{i,j},v_{i,j})$ at all pixels $(i,j)$, where $J(\{(u_{i,j},v_{i,j})\}) = \sum\limits_{i=1}^N \sum\limits_{j=1}^N (I_{x;i,j} u_{i,j} + I_{y;i,j} v_{i,j} + I_{t;i,j} )^2 + \lambda ((u_{i,j+1} - u_{i,j})^2 + (u_{i+1,j} - u_{i,j})^2 + (v_{i,j+1} - v_{i,j})^2 + (v_{i+1,j} - v_{i,j})^2)$. Setting the partial derivatives w.r.t. $u_{k,l}$ and $v_{k,l}$ to 0, prove that 
