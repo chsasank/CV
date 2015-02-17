@@ -1,8 +1,8 @@
 tic
-imNoFlash=imread('C:\Users\Tharun\Desktop\Acads\Lectures\4-2\CS 763\Assignments\CV\HW2\cave01_01_noflash.jpg');
+imNoFlash=imread('C:\Users\Tharun\Desktop\Acads\Lectures\4-2\CS 763\Assignments\CV\HW2\ImageReg\cave01_01_noflash.jpg');
 imNoFlashDown=imNoFlash(1:2:end,1:2:end,:);% Downsampling
 
-imFlash=imread('C:\Users\Tharun\Desktop\Acads\Lectures\4-2\CS 763\Assignments\CV\HW2\cave01_00_flash.jpg');
+imFlash=imread('C:\Users\Tharun\Desktop\Acads\Lectures\4-2\CS 763\Assignments\CV\HW2\ImageReg\cave01_00_flash.jpg');
 imFlashDown=imFlash(1:2:end,1:2:end,:);
 imFlashDown=rgb2gray(imFlashDown);
 %figure,imshow(imFlash)
@@ -38,6 +38,7 @@ for i=1:length(tx)
         
     end
 end
-
-surf(tx,theta,jEntr)
 toc
+find(jEntr==min(jEntr(:,:)))
+[X,Y]=meshgrid(-60:1:60,-12:1:12);
+surf(X,Y,jEntr)
