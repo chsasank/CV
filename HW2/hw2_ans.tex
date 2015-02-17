@@ -8,7 +8,7 @@
 \usepackage{amssymb}
 \usepackage{hyperref}
 \usepackage{ulem}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=0.5in]{geometry}
 \begin{document}
 \maketitle
 
@@ -32,18 +32,19 @@ Slope of line formed by $p_1,p_2$ is
 \begin{align}
 \frac{x_2-x_1}{y_2-y_1} &= \frac{\frac{f X_2}{Z_2}-\frac{f X_1}{Z_1}}{\frac{f Y_2}{Z_2}-\frac{f Y_1}{Z_1}} \\ 
  &= \frac{X_2 Z_1 - X_1 Z_2}{Y_2 Z_1 - Y_1 Z_2} \\ 
- &= \frac{(kZ_2-l)Z_1 - (kZ_1-l)Z_2}{(mZ_2-n)Z_1 - (mZ_1-n)Z_2}\\
- &= \frac{l(Z_2-Z_1)}{n(Z_1-Z_2)}\\
- &= \frac{l}{n}
+ &= \frac{k(Z_2-l)Z_1 - k(Z_1-l)Z_2}{m(Z_2-n)Z_1 - m(Z_1-n)Z_2}\\
+ &= \frac{kl(Z_2-Z_1)}{mn(Z_1-Z_2)}\\
+ &= \frac{kl}{mn}
 \end{align}
-which depends only on parameters of the line. implying that slope of $p_2,p_3$ will be same and $p_1,p_2,p_3$ are collinear if $P_1,P_2,P_3$ are collinear. \newline
+which depends only on parameters of the line implying that slope of $p_2,p_3$ will be same and $p_1,p_2,p_3$ are collinear if $P_1,P_2,P_3$ are collinear.
+
 Thus proven that linearity is preserved under perspective projection.
 \end{itemize}
 
-\item We have defined the concept of the Shannon entropy in class. Given a discrete random variable $X$ having probability mass function $P(X) = (p_1, p_2, ..., p_N)$, prove that $H(X) \geq 0$ where $H(X)$ is the Shannon entropy of $X$. Recall that $H(X) = -\sum\limits_{i=1}^N p_i \log p_i$ and that $\sum\limits_{i=1}^N p_i = 1$ and $\forall i, 0 \leq p_i \leq 1$. Also prove that a uniform distribution (\textit{ie} $\forall i, \textrm{ } p_i = \frac{1}{N}$) maximizes the Shannon entropy. To this end, find a stationary point of $J(X) = H(X) - \lambda (\sum\limits_{i=1}^N p_i - 1)$ where $\lambda$ is a Lagrange multiplier to impose the hard constraint that the probabilities all sum up to 1.  \textsf{[2+4 = 6 points]}
+\item \textit{We have defined the concept of the Shannon entropy in class. Given a discrete random variable $X$ having probability mass function $P(X) = (p_1, p_2, ..., p_N)$, prove that $H(X) \geq 0$ where $H(X)$ is the Shannon entropy of $X$. Recall that $H(X) = -\sum\limits_{i=1}^N p_i \log p_i$ and that $\sum\limits_{i=1}^N p_i = 1$ and $\forall i, 0 \leq p_i \leq 1$. Also prove that a uniform distribution (\textit{ie} $\forall i, \textrm{ } p_i = \frac{1}{N}$) maximizes the Shannon entropy. To this end, find a stationary point of $J(X) = H(X) - \lambda (\sum\limits_{i=1}^N p_i - 1)$ where $\lambda$ is a Lagrange multiplier to impose the hard constraint that the probabilities all sum up to 1.  \textsf{[2+4 = 6 points]}}
 
 \begin{itemize}
-\item[Ans.] Note that $0 \leq p_i \leq  \forall i$ and therefore $\log p_i<0$. Thus  \[
+\item[Ans.] Note that $0 \leq p_i \leq  \forall i$ and therefore $log p_i<0$. Thus  \[
 H(X) = -\sum\limits_{i=1}^N p_i \log p_i
  = \sum\limits_{i=1}^N p_i (-\log p_i)
  \geq 0
@@ -73,9 +74,6 @@ v_{k,l} = \bar{v}_{k,l} - \dfrac{I_{y;k,l} (I_{x;k,l} \bar{u}_{k,l} + I_{y;k,l} 
 where $\bar{u}_{k,l}$ and $\bar{v}_{k,l}$ are as defined in the lecture slides. \textsf{[4 points]}
 
 \begin{itemize}
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
 \item[Ans.] 
 We have
 \begin{multline*}
@@ -94,38 +92,15 @@ where $\bar{u}_{k,l}$ = (${u}_{k+1,l}$+${u}_{k,l}$+${u}_{k,l}$+${u}_{k,l-1}$)/4.
 Similarly setting partial derivative of J w.r.t. $v_{k,l}$ to 0 gives us
  \[
  (I_{y;k,l}^2 + 4 \lambda) v_{k,l} + I_{x;k,l} I_{y;k,l} u_{k,l} = 4 \lambda \bar{v}_{k,l} - I_{y;k,l} I_{t;k,l}
-=======
->>>>>>> Stashed changes
-\item[Ans.] $J(\{(u_{i,j},v_{i,j})\}) = \sum\limits_{i=1}^N \sum\limits_{j=1}^N (I_{x;i,j} u_{i,j} + I_{y;i,j} v_{i,j} + I_{t;i,j} )^2 + \lambda ((u_{i,j+1} - u_{i,j})^2 + (u_{i+1,j} - u_{i,j})^2 + (v_{i,j+1} - v_{i,j})^2 + (v_{i+1,j} - v_{i,j})^2)$ \newline
-setting partial derivative to 0 w.r.t. $u_{k,l}$ implies \[
-\frac{\partial J}{\partial u_{k,l}} = 0
-\] 
-Here terms containing $u_{k,l}$ are necessary which are $i=k,j=l$ and $i=k-1,j=l$. \[
-\implies (I_{x;k,l}^2 + 4 \lambda) u_{k,l} + I_{x;k,l} I_{y;k,l} v_{k,l} = 4 \lambda \bar{u}_{k,l} - I_{x;k,l} I_{t;k,l}
-\] 
-where $\bar{u}_{k,l}$ = (${u}_{k+1,l}$+${u}_{k,l}$+${u}_{k,l}$+${u}_{k,l-1}$)/4. \newline
-setting partial derivative to 0 w.r.t. $v_{k,l}$ implies \[
-\frac{\partial J}{\partial v_{k,l}} = 0
-\] 
-Same as above terms containing $v_{k,l}$ are necessary which are $i=k,j=l$ and $i=k-1,j=l$. \[
-\implies (I_{y;k,l}^2 + 4 \lambda) v_{k,l} + I_{x;k,l} I_{y;k,l} u_{k,l} = 4 \lambda \bar{v}_{k,l} - I_{y;k,l} I_{t;k,l}
->>>>>>> FETCH_HEAD
 \] 
 where $\bar{v}_{k,l}$ = (${v}_{k+1,l}$+${v}_{k,l}$+${v}_{k,l}$+${v}_{k,l-1}$)/4.
 
 Solving these two equations for ${u}_{k,l}$ and ${v}_{k,l}$ gives us
 \begin{align}
-u_{k,l} = \bar{u}_{k,l} - \dfrac{I_{x;k,l} (I_{x;k,l} \bar{u}_{k,l} + I_{y;k,l} \bar{v}_{k,l} + I_{t;k,l})}{I^2_{x;k,l} + I^2_{y;k,l} + 4 \lambda} \\
-v_{k,l} = \bar{v}_{k,l} - \dfrac{I_{y;k,l} (I_{x;k,l} \bar{u}_{k,l} + I_{y;k,l} \bar{v}_{k,l} + I_{t;k,l})}{I^2_{x;k,l} + I^2_{y;k,l} + 4 \lambda}
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
+u_{k,l} &= \bar{u}_{k,l} - \dfrac{I_{x;k,l} (I_{x;k,l} \bar{u}_{k,l} + I_{y;k,l} \bar{v}_{k,l} + I_{t;k,l})}{I^2_{x;k,l} + I^2_{y;k,l} + 4 \lambda} \\
+v_{k,l} &= \bar{v}_{k,l} - \dfrac{I_{y;k,l} (I_{x;k,l} \bar{u}_{k,l} + I_{y;k,l} \bar{v}_{k,l} + I_{t;k,l})}{I^2_{x;k,l} + I^2_{y;k,l} + 4 \lambda}
 \end{align}
 
-=======
->>>>>>> Stashed changes
-\]
->>>>>>> FETCH_HEAD
 \end{itemize}
 
 \item You know that both the Horn-Shunck as well as Lucas-Kanade methods bank on the brightness constancy assumption. Given a pair of images, let us suppose that this assumption holds good for most physically corresponding pixels, but not for some $p \%$ of the pixels. Briefly explain how you will modify the Horn-Shunck method and Lucas-Kanade method to deal with this. \textsf{[4 points]}
