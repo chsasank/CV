@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.2.17)  17 FEB 2015 21:40
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.2.17)  17 FEB 2015 21:19
 entering extended mode
 **hw2_ans.tex
 ("C:\Users\Rajeev P\Desktop\CV\HW2\hw2_ans.tex"
@@ -193,14 +193,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 15--19
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <10.95> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 45.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 42.
 
 [1
 
 {C:/Users/Rajeev P/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 [2]
 ! Undefined control sequence.
-l.101 ...tion of homographies is available at \url
+l.98 ...ation of homographies is available at \url
                                                   {http://www.csse.uwa.edu.a...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -209,7 +209,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.101 ...d work with the images in the folder \url
+l.98 ...ld work with the images in the folder \url
                                                   {http:\\www.cse.iitb.ac.in...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -220,13 +220,13 @@ and I'll forget about whatever was undefined.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.101 ...{http:\\www.cse.iitb.ac.in/~ajitvr/CS763_
+l.98 ...l{http:\\www.cse.iitb.ac.in/~ajitvr/CS763_
                                                   Spring2015/HW2/Homography}...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 ! Extra }, or forgotten $.
-l.101 .../~ajitvr/CS763_Spring2015/HW2/Homography}
+l.98 ...n/~ajitvr/CS763_Spring2015/HW2/Homography}
                                                    and also on any one pair ...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -237,16 +237,16 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.102 
-      
+l.99 
+     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.102 
-      
+l.99 
+     
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -254,7 +254,7 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 
-Overfull \hbox (585.8481pt too wide) in paragraph at lines 101--102
+Overfull \hbox (585.8481pt too wide) in paragraph at lines 98--99
 \OT1/cmr/m/n/10.95 www.cse.iitb.ac.in/ ajitvr/CS763$[]\OML/cmm/m/it/10.95 pring
 \OT1/cmr/m/n/10.95 2015\OML/cmm/m/it/10.95 =HW\OT1/cmr/m/n/10.95 2\OML/cmm/m/it
 /10.95 =Homographyandalsoonanyonepairofpicturesofanapproximatelyplanarscenetake
@@ -263,7 +263,7 @@ magesyourselfandmakesuretheyhavesmallnon \OMS/cmsy/m/n/10.95  $
  []
 
 
-Overfull \hbox (1720.24994pt too wide) in paragraph at lines 101--102
+Overfull \hbox (1720.24994pt too wide) in paragraph at lines 98--99
 $\OML/cmm/m/it/10.95 overlappingareastomakethismoreinteresting:\OT1/cmr/m/n/10.
 95 )\OML/cmm/m/it/10.95 Also; ineachcase; youshouldwarponeoftheimagessothatital
 ignswiththeotherone:However; thistimeyoushould[]croptheimagesothatnopartsofeith
@@ -274,7 +274,7 @@ sultingmosaicsinyourreport:Statethenumberofiterationsandallthresholdsyouused:[]
  []
 
 ! Undefined control sequence.
-l.103 ...d the flash and no-flash images from \url
+l.100 ...d the flash and no-flash images from \url
                                                   {http:\\www.cse.iitb.ac.in...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -285,13 +285,13 @@ and I'll forget about whatever was undefined.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.103 ...{http:\\www.cse.iitb.ac.in/~ajitvr/CS763_
+l.100 ...{http:\\www.cse.iitb.ac.in/~ajitvr/CS763_
                                                   Spring2015/HW2/ImageReg}. ...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 ! Extra }, or forgotten $.
-l.103 ...in/~ajitvr/CS763_Spring2015/HW2/ImageReg}
+l.100 ...in/~ajitvr/CS763_Spring2015/HW2/ImageReg}
                                                   . Convert both images to \...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -300,7 +300,7 @@ the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
 ! Undefined control sequence.
-l.103 ...2/ImageReg}. Convert both images to \sout
+l.100 ...2/ImageReg}. Convert both images to \sout
                                                   {color} gray-scale. The fl...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -311,13 +311,13 @@ and I'll forget about whatever was undefined.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.103 ...te-force search to find the angle $\theta
+l.100 ...te-force search to find the angle $\theta
                                                   $ and translation $t_x$ to...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (106.35573pt too wide) in paragraph at lines 103--104
+Overfull \hbox (106.35573pt too wide) in paragraph at lines 100--101
 \OT1/cmr/m/n/10.95 www.cse.iitb.ac.in/ ajitvr/CS763$[]\OML/cmm/m/it/10.95 pring
 \OT1/cmr/m/n/10.95 2015\OML/cmm/m/it/10.95 =HW\OT1/cmr/m/n/10.95 2\OML/cmm/m/it
 /10.95 =ImageReg:Convertbothimagesto[]gray \OMS/cmsy/m/n/10.95   \OML/cmm/m/it/
@@ -325,14 +325,14 @@ Overfull \hbox (106.35573pt too wide) in paragraph at lines 103--104
  []
 
 
-Overfull \hbox (67.7843pt too wide) in paragraph at lines 103--104
+Overfull \hbox (67.7843pt too wide) in paragraph at lines 100--101
 $\OML/cmm/m/it/10.95 flashimagehavedifferentimageintensitiesatmanyplaces; andth
 eno \OMS/cmsy/m/n/10.95   \OML/cmm/m/it/10.95 flashimageisdistinctlynoisier:Rot
 atethegivenno \OMS/cmsy/m/n/10.95  $
  []
 
 
-Overfull \hbox (148.51901pt too wide) in paragraph at lines 103--104
+Overfull \hbox (148.51901pt too wide) in paragraph at lines 100--101
 $\OML/cmm/m/it/10.95 flashimagecounter \OMS/cmsy/m/n/10.95   \OML/cmm/m/it/10.9
 5 clockwiseby\OT1/cmr/m/n/10.95 28\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 5\OML
 /cmm/m/it/10.95 degrees; translateitby \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95
@@ -342,7 +342,7 @@ m/n/10.95  $
  []
 
 
-Overfull \hbox (271.75935pt too wide) in paragraph at lines 103--104
+Overfull \hbox (271.75935pt too wide) in paragraph at lines 100--101
 $\OT1/cmr/m/n/10.95 255\OML/cmm/m/it/10.95 scale\OT1/cmr/m/n/10.95 )\OML/cmm/m/
 it/10.95 :Notethattherotationmustbeappliedaboutthecenteroftheimage:Setnegative 
 \OMS/cmsy/m/n/10.95   \OML/cmm/m/it/10.95 valuedpixelsto\OT1/cmr/m/n/10.95 0\OM
@@ -354,7 +354,7 @@ L/cmm/m/it/10.95 andpixelswithvaluemorethan\OT1/cmr/m/n/10.95 255\OML/cmm/m/it/
 ! Missing } inserted.
 <inserted text> 
                 }
-l.105 \end{enumerate}
+l.102 \end{enumerate}
                      
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -370,7 +370,7 @@ Here is how much of TeX's memory you used:
  4966 multiletter control sequences out of 15000+200000
  12748 words of font info for 47 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,9n,32p,1532b,249s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,9n,32p,1532b,251s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/latex/f
 onts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/latex/fonts/type1/pu
 blic/amsfonts/cm/cmex10.pfb><C:/Program Files/latex/fonts/type1/public/amsfonts
@@ -384,7 +384,7 @@ rogram Files/latex/fonts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Program Files
 /latex/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/latex/fonts/
 type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/latex/fonts/type1/public/a
 msfonts/cm/cmti10.pfb>
-Output written on hw2_ans.pdf (3 pages, 182246 bytes).
+Output written on hw2_ans.pdf (3 pages, 182163 bytes).
 PDF statistics:
  68 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
