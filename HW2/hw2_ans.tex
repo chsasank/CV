@@ -6,8 +6,8 @@
 
 \usepackage{amsmath}
 \usepackage{amssymb}
-%\usepackage{hyperref}
-%\usepackage{ulem}
+\usepackage{hyperref}
+\usepackage{ulem}
 \usepackage[margin=0.5in]{geometry}
 \begin{document}
 \maketitle
@@ -21,21 +21,23 @@
 \item Prove that collinearity of points is preserved under perspective projection. \textsf{[4 points]} 
 
 \begin{itemize}
-\item[Ans.] Let $P_1,P_2$ be two points on a line and $p_1,p_2$ be their respective images through perspective projection. we need to prove that linearity is preserved.It is sufficient to show that slope of line formed by $p_1,p_2$ is independent of any coordinate of $P_1,P_2$ which will imply that slope will remain same for another pair $p_2,p_3$ formed by $P_2,P_3$ where $P_3$ is also a point on given $3D$ line. \newline
-Let line formed by $P_1,P_2$ be given by \[
+\item[Ans.] Let $P_1,P_2$ be two points on the line \[
 \frac{X}{k}+l = \frac{Y}{m}+n = Z.
 \]
-where $k,l,m,n$ are constants for a given line. \newline
-Slope of line formed by $p_1,p_2$ is $\frac{x_2-x_1}{y_2-y_1}$. \[
-\frac{x_2-x_1}{y_2-y_1} = \frac{\frac{f X_2}{Z_2}-\frac{f X_1}{Z_1}}{\frac{f Y_2}{Z_2}-\frac{f Y_1}{Z_1}}
-\] \[
-\implies
-\frac{x_2-x_1}{y_2-y_1} = \frac{X_2 Z_1 - X_1 Z_2}{Y_2 Z_1 - Y_1 Z_2}
-\] \[
-\implies
-\frac{x_2-x_1}{y_2-y_1} = \frac{k l}{m n}
-\]
-which is independent of coordinates of $P_1,P_2$ implying that slope of $p_2,p_3$ will be same and $p_1,p_2,p_3$ are collinear if $P_1,P_2,P_3$ are collinear. \newline
+where $k,l,m,n$ are constants for a given line and $p_1,p_2$ be their respective images through perspective projection.
+ We'll show that slope of line formed by $p_1,p_2$ depends only on parameters of line which will then imply that slope will remain same for another pair $p_2,p_3$ formed by $P_2,P_3$ where $P_3$ is also a point on given $3D$ line. 
+
+
+Slope of line formed by $p_1,p_2$ is 
+\begin{align}
+\frac{x_2-x_1}{y_2-y_1} &= \frac{\frac{f X_2}{Z_2}-\frac{f X_1}{Z_1}}{\frac{f Y_2}{Z_2}-\frac{f Y_1}{Z_1}} \\ 
+ &= \frac{X_2 Z_1 - X_1 Z_2}{Y_2 Z_1 - Y_1 Z_2} \\ 
+ &= \frac{(kZ_2-l)Z_1 - (kZ_1-l)Z_2}{(mZ_2-n)Z_1 - (mZ_1-n)Z_2}\\
+ &= \frac{l(Z_2-Z_1)}{n(Z_1-Z_2)}\\
+ &= \frac{l}{n}
+\end{align}
+which depends only on parameters of the line implying that slope of $p_2,p_3$ will be same and $p_1,p_2,p_3$ are collinear if $P_1,P_2,P_3$ are collinear.
+
 Thus proven that linearity is preserved under perspective projection.
 \end{itemize}
 
@@ -72,25 +74,33 @@ v_{k,l} = \bar{v}_{k,l} - \dfrac{I_{y;k,l} (I_{x;k,l} \bar{u}_{k,l} + I_{y;k,l} 
 where $\bar{u}_{k,l}$ and $\bar{v}_{k,l}$ are as defined in the lecture slides. \textsf{[4 points]}
 
 \begin{itemize}
-\item[Ans.] $J(\{(u_{i,j},v_{i,j})\}) = \sum\limits_{i=1}^N \sum\limits_{j=1}^N (I_{x;i,j} u_{i,j} + I_{y;i,j} v_{i,j} + I_{t;i,j} )^2 + \lambda ((u_{i,j+1} - u_{i,j})^2 + (u_{i+1,j} - u_{i,j})^2 + (v_{i,j+1} - v_{i,j})^2 + (v_{i+1,j} - v_{i,j})^2)$ \newline
-setting partial derivative to 0 w.r.t. $u_{k,l}$ implies \[
-\frac{\partial J}{\partial u_{k,l}} = 0
-\] 
-Here terms containing $u_{k,l}$ are necessary which are $i=k,j=l$ and $i=k-1,j=l$. \[
-\implies (I_{x;k,l}^2 + 4 \lambda) u_{k,l} + I_{x;k,l} I_{y;k,l} v_{k,l} = 4 \lambda \bar{u}_{k,l} - I_{x;k,l} I_{t;k,l}
-\] 
-where $\bar{u}_{k,l}$ = (${u}_{k+1,l}$+${u}_{k,l}$+${u}_{k,l}$+${u}_{k,l-1}$)/4. \newline
-setting partial derivative to 0 w.r.t. $v_{k,l}$ implies \[
-\frac{\partial J}{\partial v_{k,l}} = 0
-\] 
-Same as above terms containing $v_{k,l}$ are necessary which are $i=k,j=l$ and $i=k-1,j=l$. \[
-\implies (I_{y;k,l}^2 + 4 \lambda) v_{k,l} + I_{x;k,l} I_{y;k,l} u_{k,l} = 4 \lambda \bar{v}_{k,l} - I_{y;k,l} I_{t;k,l}
-\] 
-where $\bar{v}_{k,l}$ = (${v}_{k+1,l}$+${v}_{k,l}$+${v}_{k,l}$+${v}_{k,l-1}$)/4. \newline
-solving these two equations for ${u}_{k,l}$ and ${v}_{k,l}$ gives \[
-u_{k,l} = \bar{u}_{k,l} - \dfrac{I_{x;k,l} (I_{x;k,l} \bar{u}_{k,l} + I_{y;k,l} \bar{v}_{k,l} + I_{t;k,l})}{I^2_{x;k,l} + I^2_{y;k,l} + 4 \lambda}\] \[ 
-v_{k,l} = \bar{v}_{k,l} - \dfrac{I_{y;k,l} (I_{x;k,l} \bar{u}_{k,l} + I_{y;k,l} \bar{v}_{k,l} + I_{t;k,l})}{I^2_{x;k,l} + I^2_{y;k,l} + 4 \lambda}
+\item[Ans.] 
+We have
+\begin{multline*}
+J(\{(u_{i,j},v_{i,j})\}) = \sum\limits_{i=1}^N \sum\limits_{j=1}^N (I_{x;i,j} u_{i,j} + I_{y;i,j} v_{i,j} + I_{t;i,j} )^2 \\
++ \lambda ((u_{i,j+1} - u_{i,j})^2 + (u_{i+1,j} - u_{i,j})^2 + (v_{i,j+1} - v_{i,j})^2 + (v_{i+1,j} - v_{i,j})^2)
+\end{multline*}
+
+Set partial derivative of J w.r.t. $u_{k,l}$ to 0 i.e $\frac{\partial J}{\partial u_{k,l}} = 0$.
+In the summation above, terms which contain $u_{k,l}$ correspond to $i=k,j=l$ and $i=k-1,j=l$. On simplifying the equation, we get
+\[
+(I_{x;k,l}^2 + 4 \lambda) u_{k,l} + I_{x;k,l} I_{y;k,l} v_{k,l} = 4 \lambda \bar{u}_{k,l} - I_{x;k,l} I_{t;k,l}
 \]
+
+where $\bar{u}_{k,l}$ = (${u}_{k+1,l}$+${u}_{k,l}$+${u}_{k,l}$+${u}_{k,l-1}$)/4. 
+
+Similarly setting partial derivative of J w.r.t. $v_{k,l}$ to 0 gives us
+ \[
+ (I_{y;k,l}^2 + 4 \lambda) v_{k,l} + I_{x;k,l} I_{y;k,l} u_{k,l} = 4 \lambda \bar{v}_{k,l} - I_{y;k,l} I_{t;k,l}
+\] 
+where $\bar{v}_{k,l}$ = (${v}_{k+1,l}$+${v}_{k,l}$+${v}_{k,l}$+${v}_{k,l-1}$)/4.
+
+Solving these two equations for ${u}_{k,l}$ and ${v}_{k,l}$ gives us
+\begin{align}
+u_{k,l} &= \bar{u}_{k,l} - \dfrac{I_{x;k,l} (I_{x;k,l} \bar{u}_{k,l} + I_{y;k,l} \bar{v}_{k,l} + I_{t;k,l})}{I^2_{x;k,l} + I^2_{y;k,l} + 4 \lambda} \\
+v_{k,l} &= \bar{v}_{k,l} - \dfrac{I_{y;k,l} (I_{x;k,l} \bar{u}_{k,l} + I_{y;k,l} \bar{v}_{k,l} + I_{t;k,l})}{I^2_{x;k,l} + I^2_{y;k,l} + 4 \lambda}
+\end{align}
+
 \end{itemize}
 
 \item You know that both the Horn-Shunck as well as Lucas-Kanade methods bank on the brightness constancy assumption. Given a pair of images, let us suppose that this assumption holds good for most physically corresponding pixels, but not for some $p \%$ of the pixels. Briefly explain how you will modify the Horn-Shunck method and Lucas-Kanade method to deal with this. \textsf{[4 points]}
