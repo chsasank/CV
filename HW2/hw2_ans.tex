@@ -72,8 +72,7 @@ v_{k,l} = \bar{v}_{k,l} - \dfrac{I_{y;k,l} (I_{x;k,l} \bar{u}_{k,l} + I_{y;k,l} 
 where $\bar{u}_{k,l}$ and $\bar{v}_{k,l}$ are as defined in the lecture slides. \textsf{[4 points]}
 
 \begin{itemize}
-\item[Ans.] 
-$J(\{(u_{i,j},v_{i,j})\}) = \sum\limits_{i=1}^N \sum\limits_{j=1}^N (I_{x;i,j} u_{i,j} + I_{y;i,j} v_{i,j} + I_{t;i,j} )^2 + \lambda ((u_{i,j+1} - u_{i,j})^2 + (u_{i+1,j} - u_{i,j})^2 + (v_{i,j+1} - v_{i,j})^2 + (v_{i+1,j} - v_{i,j})^2)$ \newline
+\item[Ans.] $J(\{(u_{i,j},v_{i,j})\}) = \sum\limits_{i=1}^N \sum\limits_{j=1}^N (I_{x;i,j} u_{i,j} + I_{y;i,j} v_{i,j} + I_{t;i,j} )^2 + \lambda ((u_{i,j+1} - u_{i,j})^2 + (u_{i+1,j} - u_{i,j})^2 + (v_{i,j+1} - v_{i,j})^2 + (v_{i+1,j} - v_{i,j})^2)$ \newline
 setting partial derivative to 0 w.r.t. $u_{k,l}$ implies \[
 \frac{\partial J}{\partial u_{k,l}} = 0
 \] 
@@ -91,7 +90,6 @@ where $\bar{v}_{k,l}$ = (${v}_{k+1,l}$+${v}_{k,l}$+${v}_{k,l}$+${v}_{k,l-1}$)/4.
 solving these two equations for ${u}_{k,l}$ and ${v}_{k,l}$ gives \[
 u_{k,l} = \bar{u}_{k,l} - \dfrac{I_{x;k,l} (I_{x;k,l} \bar{u}_{k,l} + I_{y;k,l} \bar{v}_{k,l} + I_{t;k,l})}{I^2_{x;k,l} + I^2_{y;k,l} + 4 \lambda}\] \[ 
 v_{k,l} = \bar{v}_{k,l} - \dfrac{I_{y;k,l} (I_{x;k,l} \bar{u}_{k,l} + I_{y;k,l} \bar{v}_{k,l} + I_{t;k,l})}{I^2_{x;k,l} + I^2_{y;k,l} + 4 \lambda}
-\end{eqnarray}
 \]
 \end{itemize}
 
