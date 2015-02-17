@@ -8,7 +8,12 @@
 \usepackage{amssymb}
 \usepackage{hyperref}
 \usepackage{ulem}
+\usepackage{fancyvrb}
+\usepackage{todonotes}
+
 \usepackage[margin=0.5in]{geometry}
+\usepackage{subfig}
+
 \begin{document}
 \maketitle
 
@@ -108,6 +113,24 @@ v_{k,l} &= \bar{v}_{k,l} - \dfrac{I_{y;k,l} (I_{x;k,l} \bar{u}_{k,l} + I_{y;k,l}
 \item In this assignment, you will build up on the previous assignment to estimate the homography between two images. This time, you should use the RanSaC algorithm to estimate the homography in order to make the estimate resistant to the presence of incorrect point correspondences. The code for RanSaC for various problems including estimation of homographies is available at \url{http://www.csse.uwa.edu.au/~pk/research/matlabfns/}. You should work with the images in the folder \url{http:\\www.cse.iitb.ac.in/~ajitvr/CS763_Spring2015/HW2/Homography} and also on any one pair of pictures of an approximately planar scene taken with a real camera. (You should acquire these images yourself and make sure they have small non-overlapping areas to make this more interesting.) Also, in each case, you should warp one of the images so that it aligns with the other one. However, this time you should \emph{not} crop the image so that no parts of either image are deleted, and a true mosaic may be obtained. While you should use the RanSaC code as is, I recommend stepping through it to get a feel for what is going on inside. Display all the resulting mosaics in your report. State the number of iterations and all thresholds you used. \textsf{[5 points]}
 
 \item Here we will register a flash and a no-flash image pair using the joint entropy criterion we studied in class. Download the flash and no-flash images from \url{http:\\www.cse.iitb.ac.in/~ajitvr/CS763_Spring2015/HW2/ImageReg}. Convert both images to \sout{color} gray-scale. The flash image and the no-flash image have different image intensities at many places, and the no-flash image is distinctly noisier. Rotate the given no-flash image counter-clockwise by 28.5 degrees, translate it by -6 pixels in the X direction, and add Gaussian noise of standard deviation 5 (on a 0-255 scale). Note that the rotation must be applied about the center of the image. Set negative-valued pixels to 0 and pixels with value more than 255 to 255. Now perform a brute-force search to find the angle $\theta$ and translation $t_x$ to optimally align the modified no-flash image with the flash image, so as to minimize the joint entropy. The range for $\theta$ is between -60 and +60 in steps of 1 degree, and the range for $t_x$ should be between -12 and +12 in steps of 1. Compute the joint entropy using a bin-size of 10 for both intensities. Plot the joint entropy as a function of $\theta$ and $t_x$ using the surf and imshow commands of MATLAB. Also, determine a scenario where the images are obviously misaligned but the joint entropy is (falsely and undesirably) lower than the `true' minimum. Again, display the joint entropy as mentioned before. Include all plots in your report. \textsf{[7 points]} 
+\begin{itemize}
+\item[Ans.]
+\begin{figure}[h]
+    \centering
+    \subfloat[Original Image]{\includegraphics[width=2.5in]{1_Original.jpg}}%
+    \qquad
+    \subfloat[Misaligned Image]{{\includegraphics[width=2.5in]{2_MisAligned.jpg} }}%
+	\qquad
+	\subfloat[Realigned Image]{{\includegraphics[width=2.5in]{3_ReAligned.jpg} }}%
+	\qquad
+	\subfloat[Joint Entropy surface plot]{{\includegraphics[width=5in]{surf.jpg} }}%
+	\qquad
+	\subfloat[Misaligned surface plot]{{\includegraphics[width=5in]{surf_bad.jpg} }}%
+
+	\caption{}
+\end{figure}
+
+\end{itemize}
 
 \end{enumerate}
 \end{document}
