@@ -1,0 +1,281 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>graph_cuts_iterative</title><meta name="generator" content="MATLAB 8.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-04-23"><meta name="DC.source" content="graph_cuts_iterative.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">Read image and take input; initialize</a></li><li><a href="#2">Segmentation</a></li></ul></div><h2>Read image and take input; initialize<a name="1"></a></h2><pre class="codeinput">clc;clear; close <span class="string">all</span>; addpath(<span class="string">'GCMex'</span>)
+im = rgb2gray(imread(<span class="string">'rose.jpg'</span>));
+rect = rectInput(im); <span class="comment">% Take input</span>
+sz = size(im);
+sz = sz(1:2);
+
+Z = double(im(:));
+N = numel(Z);
+
+alpha = ones(size(im));
+alpha(rect(1):rect(1)+rect(3),rect(2):rect(2)+rect(4)) = 2;
+alpha = alpha(:);
+</pre><h2>Segmentation<a name="2"></a></h2><pre class="codeinput">gamma = 50;
+
+<span class="keyword">for</span> iter = 1:10
+
+    h = [imhist(uint8(Z(alpha == 1))) imhist(uint8(Z(alpha == 2)))]; <span class="comment">%2*256</span>
+    h = h./repmat(sum(h),256,1);
+
+    class = alpha-1;
+
+    eps = exp(-20);
+    unary = -log(h(Z+1,:)+eps);
+
+
+
+    r = zeros(N*8,1);
+    c = zeros(N*8,1);
+    s = zeros(N*8,1);
+
+    beta = 0.5/mean(pdist(Z(randperm(N,5000))).^2);
+
+    disp(<span class="string">'Assembling pairwise matrix'</span>)
+    j = 1;
+    <span class="keyword">for</span> i = 1:N
+        [x,y] = ind2sub_fast(sz,i);
+
+        <span class="comment">%8 stencil</span>
+        m = sub2ind_fast(sz,min(x+1,size(im,1)),y);
+        s(j) = 1*(alpha(m) ~= alpha(i))*exp(-beta*(Z(m)-Z(i))^2);
+        c(j) = m; r(j) = i;j=j+1;
+
+        m = sub2ind_fast(sz,max(x-1,1),y);
+        s(j) = 1*(alpha(m) ~= alpha(i))*exp(-beta*(Z(m)-Z(i))^2);
+        c(j) = m; r(j) = i;j=j+1;
+
+        m = sub2ind_fast(sz,x,min(y+1,size(im,2)));
+        s(j) = 1*(alpha(m) ~= alpha(i))*exp(-beta*(Z(m)-Z(i))^2);
+        c(j) = m; r(j) = i;j=j+1;
+
+        m = sub2ind_fast(sz,x,min(y+1,size(im,2)));
+        s(j) = 1*(alpha(m) ~= alpha(i))*exp(-beta*(Z(m)-Z(i))^2);
+        c(j) = m; r(j) = i;j=j+1;
+
+
+
+        m = sub2ind_fast(sz,min(x+1,size(im,1)),min(y+1,size(im,2)));
+        s(j) = 1/sqrt(2)*(alpha(m) ~= alpha(i))*exp(-beta*(Z(m)-Z(i))^2);
+        c(j) = m; r(j) = i;j=j+1;
+
+        m = sub2ind_fast(sz,max(x-1,1),max(y-1,1));
+        s(j) = 1/sqrt(2)*(alpha(m) ~= alpha(i))*exp(-beta*(Z(m)-Z(i))^2);
+        c(j) = m; r(j) = i;j=j+1;
+
+        m = sub2ind_fast(sz,max(x-1,1),min(y+1,size(im,2)));
+        s(j) = 1/sqrt(2)*(alpha(m) ~= alpha(i))*exp(-beta*(Z(m)-Z(i))^2);
+        c(j) = m; r(j) = i;j=j+1;
+
+        m = sub2ind_fast(sz,min(x+1,size(im,1)),max(y-1,1));
+        s(j) = 1/sqrt(2)*(alpha(m) ~= alpha(i))*exp(-beta*(Z(m)-Z(i))^2);
+        c(j) = m; r(j) = i;j=j+1;
+
+    <span class="keyword">end</span>
+    pairwise = gamma*sparse(r,c,s,N,N);
+
+    disp(<span class="string">'done'</span>)
+
+    [labels, energy, energyAfter] = <span class="keyword">...</span>
+        GCMex(class', single(unary'), pairwise, single(zeros(2)));
+
+    figure
+    imshow(cutImage(im,labels,1))
+
+    alpha = labels + 1;
+<span class="keyword">end</span>
+
+imshow(cutImage(im,labels,1))
+
+<span class="comment">% figure</span>
+<span class="comment">% subplot(1,2,1)</span>
+<span class="comment">% imshow(cutImage(im,labels,1))</span>
+<span class="comment">% subplot(1,2,2)</span>
+<span class="comment">% imshow(reshape(labels,sz))</span>
+</pre><pre class="codeoutput">Assembling pairwise matrix
+done
+Assembling pairwise matrix
+done
+Assembling pairwise matrix
+done
+Assembling pairwise matrix
+done
+Assembling pairwise matrix
+done
+Assembling pairwise matrix
+done
+Assembling pairwise matrix
+done
+Assembling pairwise matrix
+done
+Assembling pairwise matrix
+done
+Assembling pairwise matrix
+done
+</pre><img vspace="5" hspace="5" src="graph_cuts_iterative_01.png" alt=""> <img vspace="5" hspace="5" src="graph_cuts_iterative_02.png" alt=""> <img vspace="5" hspace="5" src="graph_cuts_iterative_03.png" alt=""> <img vspace="5" hspace="5" src="graph_cuts_iterative_04.png" alt=""> <img vspace="5" hspace="5" src="graph_cuts_iterative_05.png" alt=""> <img vspace="5" hspace="5" src="graph_cuts_iterative_06.png" alt=""> <img vspace="5" hspace="5" src="graph_cuts_iterative_07.png" alt=""> <img vspace="5" hspace="5" src="graph_cuts_iterative_08.png" alt=""> <img vspace="5" hspace="5" src="graph_cuts_iterative_09.png" alt=""> <img vspace="5" hspace="5" src="graph_cuts_iterative_10.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2014a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Read image and take input; initialize
+clc;clear; close all; addpath('GCMex')
+im = rgb2gray(imread('rose.jpg'));
+rect = rectInput(im); % Take input
+sz = size(im);
+sz = sz(1:2);
+
+Z = double(im(:));
+N = numel(Z);
+
+alpha = ones(size(im));
+alpha(rect(1):rect(1)+rect(3),rect(2):rect(2)+rect(4)) = 2;
+alpha = alpha(:);
+%% Segmentation
+
+gamma = 50;
+
+for iter = 1:10
+    
+    h = [imhist(uint8(Z(alpha == 1))) imhist(uint8(Z(alpha == 2)))]; %2*256
+    h = h./repmat(sum(h),256,1);
+    
+    class = alpha-1;
+    
+    eps = exp(-20);
+    unary = -log(h(Z+1,:)+eps);
+    
+    
+    
+    r = zeros(N*8,1);
+    c = zeros(N*8,1);
+    s = zeros(N*8,1);
+    
+    beta = 0.5/mean(pdist(Z(randperm(N,5000))).^2);
+    
+    disp('Assembling pairwise matrix')
+    j = 1;
+    for i = 1:N
+        [x,y] = ind2sub_fast(sz,i);
+        
+        %8 stencil
+        m = sub2ind_fast(sz,min(x+1,size(im,1)),y);
+        s(j) = 1*(alpha(m) ~= alpha(i))*exp(-beta*(Z(m)-Z(i))^2);
+        c(j) = m; r(j) = i;j=j+1;
+        
+        m = sub2ind_fast(sz,max(x-1,1),y);
+        s(j) = 1*(alpha(m) ~= alpha(i))*exp(-beta*(Z(m)-Z(i))^2);
+        c(j) = m; r(j) = i;j=j+1;
+        
+        m = sub2ind_fast(sz,x,min(y+1,size(im,2)));
+        s(j) = 1*(alpha(m) ~= alpha(i))*exp(-beta*(Z(m)-Z(i))^2);
+        c(j) = m; r(j) = i;j=j+1;
+        
+        m = sub2ind_fast(sz,x,min(y+1,size(im,2)));
+        s(j) = 1*(alpha(m) ~= alpha(i))*exp(-beta*(Z(m)-Z(i))^2);
+        c(j) = m; r(j) = i;j=j+1;
+        
+        
+        
+        m = sub2ind_fast(sz,min(x+1,size(im,1)),min(y+1,size(im,2)));
+        s(j) = 1/sqrt(2)*(alpha(m) ~= alpha(i))*exp(-beta*(Z(m)-Z(i))^2);
+        c(j) = m; r(j) = i;j=j+1;
+        
+        m = sub2ind_fast(sz,max(x-1,1),max(y-1,1));
+        s(j) = 1/sqrt(2)*(alpha(m) ~= alpha(i))*exp(-beta*(Z(m)-Z(i))^2);
+        c(j) = m; r(j) = i;j=j+1;
+        
+        m = sub2ind_fast(sz,max(x-1,1),min(y+1,size(im,2)));
+        s(j) = 1/sqrt(2)*(alpha(m) ~= alpha(i))*exp(-beta*(Z(m)-Z(i))^2);
+        c(j) = m; r(j) = i;j=j+1;
+        
+        m = sub2ind_fast(sz,min(x+1,size(im,1)),max(y-1,1));
+        s(j) = 1/sqrt(2)*(alpha(m) ~= alpha(i))*exp(-beta*(Z(m)-Z(i))^2);
+        c(j) = m; r(j) = i;j=j+1;
+        
+    end
+    pairwise = gamma*sparse(r,c,s,N,N);
+    
+    disp('done')
+    
+    [labels, energy, energyAfter] = ...
+        GCMex(class', single(unary'), pairwise, single(zeros(2)));
+    
+    figure
+    imshow(cutImage(im,labels,1))
+    
+    alpha = labels + 1;
+end
+
+imshow(cutImage(im,labels,1))
+
+% figure
+% subplot(1,2,1)
+% imshow(cutImage(im,labels,1))
+% subplot(1,2,2)
+% imshow(reshape(labels,sz))
+##### SOURCE END #####
+--></body></html>
