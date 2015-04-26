@@ -13,7 +13,6 @@ N = numel(Z);
 
 im_crop_clr = im_clr(rect(1):rect(1)+rect(3),rect(2):rect(2)+rect(4),:);
 im_crop =im(rect(1):rect(1)+rect(3),rect(2):rect(2)+rect(4));
-sz_crop = size(im_crop);
 Z_crop = double(im_crop(:));
 N_crop = numel(Z_crop);
 
@@ -50,4 +49,4 @@ figure
 subplot(1,2,1)
 imshow(cutImage(im_crop_clr,labels,2))
 subplot(1,2,2)
-imshow(reshape(double(labels-1),sz_crop))
+imshow(reshape(double(labels-1),size(im_crop)))
