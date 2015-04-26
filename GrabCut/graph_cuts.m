@@ -1,6 +1,6 @@
 %% Read image and take input; initialize
 clc;clear; close all; addpath('gco-v3.0/matlab')
-im_clr = imread('cat_small.jpg');
+im_clr = imread('rose.jpg');
 im = rgb2gray(im_clr);
 rect = rectInput(im_clr); % Take input
 sz = size(im);
