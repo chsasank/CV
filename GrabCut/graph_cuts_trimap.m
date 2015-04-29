@@ -3,7 +3,7 @@
 % learns the model from all the matrix.
 
 clc;clear; close all; addpath('gco-v3.0/matlab')
-im_clr = imread('parrot_small.jpg');
+im_clr = imread('rose_small.jpg');
 im = rgb2gray(im_clr);
 rect = rectInput(im_clr); % Take input
 sz = size(im);
@@ -20,7 +20,7 @@ alpha = ones(size(im));
 alpha(rect(1):rect(1)+rect(3),rect(2):rect(2)+rect(4)) = 2;
 alpha = alpha(:);
 %% Unary and Pairwise
-gamma = 10;%10*100;
+gamma = 50;%10*100;
 beta = 0.5/mean((Z_crop - circshift(Z_crop,1)).^2);
 
 

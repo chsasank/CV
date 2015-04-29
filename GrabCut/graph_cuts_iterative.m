@@ -1,4 +1,5 @@
 %% Read image and take input; initialize
+% Iterative version of graph_cuts, no observable difference.
 clc;clear; close all; addpath('GCMex')
 im = rgb2gray(imread('rose_small.jpg'));
 rect = rectInput(im); % Take input

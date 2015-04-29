@@ -23,7 +23,7 @@ h = h';
 eps = exp(-50);
 unary = -10*log(h(:,Z+1)+eps);
 
-pairwise = assmeblePairwise(im_crop,gamma,beta);
+pairwise = assmeblePairwise(im,gamma,beta);
 
 %% GCO
 gc_obj = GCO_Create(N,2);
