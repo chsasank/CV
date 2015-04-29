@@ -1,8 +1,12 @@
-function [ rect ] = rectInput( im )
+function [ rect ] = rectInput( im,verbose )
 %rectInput Asks user to draw a rectangle bounding box around foreground
 imshow(im)
 title('Draw a bounding box around foreground')
 sz = size(im);
+
+if(nargin <2)
+    verbose = true;
+end
 
 user_input = 1;
 while user_input == 1
@@ -19,16 +23,21 @@ while user_input == 1
         rect(4) = sz(2) - rect(2);
     end
     
+    
     rectangle('position',[rect(2) rect(1) rect(4) rect(3) ]);
-    button = questdlg('This is what you wanted to select?');
-    if strcmp(button,'Yes')
-        user_input = 0;
-    elseif strcmp(button,'No')
-        user_input = 1;
+    if(verbose)
+        button = questdlg('This is what you wanted to select?');
+        if strcmp(button,'Yes')
+            user_input = 0;
+        elseif strcmp(button,'No')
+            user_input = 1;
+        else
+            close all
+            
+            error('User canceled')
+        end
     else
-        close all
-
-        error('User canceled')
+        user_input = 0;
     end
 end
 close all
