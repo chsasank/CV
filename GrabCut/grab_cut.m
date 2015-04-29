@@ -3,7 +3,7 @@
 clc;clear; close all; addpath('gco-v3.0/matlab')
 verbose = true;
 
-im_clr = imread('me_small.jpg');
+im_clr = imread('me2_small.jpg');
 im = im_clr;
 rect = rectInput(im_clr,verbose); % Take input
 sz = size(im);
@@ -21,7 +21,7 @@ N_crop = size(im_crop_clr,1)*size(im_crop_clr,2);
 
 
 %% Pairwise
-gamma = 10*40; %for smoothening
+gamma = 40; %for smoothening
 c = 2; %for edge contrast; more beta - less contrast considered as edges 
 beta = c*0.5/mean(sum((Z - circshift(Z,1)).^2,2)); 
 k = 4; %number of components in gmm
@@ -36,12 +36,12 @@ for i = 1:maxIter
     gmm_back = gmdistribution.fit(Z(alpha == 1,:),k,'Regularize',1e-4);
     gmm_fore = gmdistribution.fit(Z(alpha == 2,:),k,'Regularize',1e-4);
     
-    
-    pdf_back = -log(pdf(gmm_back,Z));
-    pdf_fore = -log(pdf(gmm_fore,Z));
+    epsl = exp(-50);
+    pdf_back = -log(pdf(gmm_back,Z)+epsl);
+    pdf_fore = -log(pdf(gmm_fore,Z)+epsl);
     unary = [pdf_back, pdf_fore]';
     t = toc;
-    if(verbose) disp([num2str(t),'seconds for finding unary matrix']); end
+    if(verbose) disp([num2str(t),' seconds for finding unary matrix']); end
     %% GCO
     gc_obj = GCO_Create(N,2);
     GCO_SetDataCost(gc_obj,int32(unary))

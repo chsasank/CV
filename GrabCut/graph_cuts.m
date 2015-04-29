@@ -3,7 +3,7 @@
 clc;clear; close all; addpath('gco-v3.0/matlab')
 verbose = true;
 
-im_clr = imread('me_small.jpg');
+im_clr = imread('varun.jpg');
 im = rgb2gray(im_clr);
 rect = rectInput(im_clr,verbose); % Take input
 sz = size(im);
@@ -23,8 +23,8 @@ beta = 0.25/mean(sum((Z - circshift(Z,1)).^2,2));
 h = [imhist(uint8(Z(alpha == 1))) imhist(uint8(Z(alpha == 2)))];
 h = h./repmat(sum(h),256,1);
 h = h';
-eps = exp(-50);
-unary = -10*log(h(:,Z+1)+eps);
+epsl = exp(-50);
+unary = -10*log(h(:,Z+1)+epsl);
 
 pairwise = assmeblePairwise(im,gamma,beta,verbose);
 
