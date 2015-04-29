@@ -14,8 +14,8 @@ alpha(rect(1):rect(1)+rect(3),rect(2):rect(2)+rect(4)) = 2;
 alpha = alpha(:);
 
 %% Unary and Pairwise
-gamma = 50;
-beta = 0.5/mean((Z - circshift(Z,1)).^2);
+gamma = 500;
+beta = 0.1*0.5/mean((Z - circshift(Z,1)).^2);
 
 h = [imhist(uint8(Z(alpha == 1))) imhist(uint8(Z(alpha == 2)))];
 h = h./repmat(sum(h),256,1);
