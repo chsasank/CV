@@ -3,7 +3,7 @@
 clc;clear; close all; addpath('gco-v3.0/matlab')
 verbose = true;
 
-im_clr = imread('parrot_small.jpg');
+im_clr = imread('me_small.jpg');
 im = im_clr;
 rect = rectInput(im_clr,verbose); % Take input
 sz = size(im);
@@ -21,19 +21,20 @@ N_crop = size(im_crop_clr,1)*size(im_crop_clr,2);
 
 
 %% Pairwise
-gamma = 40; %for smoothening
-beta = 0.4/mean(sum((Z - circshift(Z,1)).^2,2)); %for edge contrast; more beta - less contrast considered as edges 
-k = 3; %number of components in gmm
+gamma = 10*40; %for smoothening
+c = 2; %for edge contrast; more beta - less contrast considered as edges 
+beta = c*0.5/mean(sum((Z - circshift(Z,1)).^2,2)); 
+k = 4; %number of components in gmm
 
 pairwise = assmeblePairwise(im,gamma,beta,verbose);
 
-maxIter = 3;
+maxIter = 2;
 %% Iterations
 for i = 1:maxIter 
     %% Unary
     tic
-    gmm_back = gmdistribution.fit(Z(alpha == 1,:),k);
-    gmm_fore = gmdistribution.fit(Z(alpha == 2,:),k);
+    gmm_back = gmdistribution.fit(Z(alpha == 1,:),k,'Regularize',1e-4);
+    gmm_fore = gmdistribution.fit(Z(alpha == 2,:),k,'Regularize',1e-4);
     
     
     pdf_back = -log(pdf(gmm_back,Z));

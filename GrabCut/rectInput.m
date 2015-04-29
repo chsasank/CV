@@ -16,6 +16,12 @@ while user_input == 1
     
     %fix any problems
     rect = fix(rect);
+    if rect(1) <= 0
+        rect(1) = 1;
+    end
+    if rect(2) <= 0
+        rect(2) = 1;
+    end
     if rect(3)+rect(1)>= sz(1)
         rect(3) = sz(1) - rect(1);
     end

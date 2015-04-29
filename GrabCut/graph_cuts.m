@@ -1,9 +1,9 @@
 %% Read image and take input; initialize
 % Works on gray image rather than using color data
 clc;clear; close all; addpath('gco-v3.0/matlab')
-verbose = false;
+verbose = true;
 
-im_clr = imread('rose_small.jpg');
+im_clr = imread('me_small.jpg');
 im = rgb2gray(im_clr);
 rect = rectInput(im_clr,verbose); % Take input
 sz = size(im);
