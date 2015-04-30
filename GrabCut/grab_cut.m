@@ -3,7 +3,7 @@
 clc;clear; close all; addpath('gco-v3.0/matlab')
 verbose = true;
 
-im_clr = imread('rose.jpg');
+im_clr = imread('cat.jpg');
 im = im_clr;
 rect = rectInput(im_clr,verbose); % Take input
 sz = size(im);
