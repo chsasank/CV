@@ -1,46 +1,40 @@
 %% Read image and take input; initialize
-% for color images
-clc;clear; close all; addpath('gco-v3.0/matlab')
+% Iterative version of graph_cuts
+clc;clear; close all; 
+addpath('gco-v3.0/matlab'); 
 verbose = true;
 
 im_clr = imread('varun.jpg');
-im = im_clr;
-rect = rectInput(im_clr,verbose); % Take input
+im = rgb2gray(im_clr);
+im = histeq(im);
+rect = rectInput(im_clr); % Take input
 sz = size(im);
 sz = sz(1:2);
 
-N = sz(1)*sz(2);
-Z = double(reshape(im,N,3));
+Z = double(im(:));
+N = numel(Z);
 
-alpha = ones(sz(1),sz(2));
+alpha = ones(size(im));
 alpha(rect(1):rect(1)+rect(3),rect(2):rect(2)+rect(4)) = 2;
 alpha = alpha(:);
 
-im_crop_clr = im_clr(rect(1):rect(1)+rect(3),rect(2):rect(2)+rect(4),:);
-N_crop = size(im_crop_clr,1)*size(im_crop_clr,2);
-
-
 %% Pairwise
-gamma = 40; %for smoothening
-c = 10; %for edge contrast; more beta - less contrast considered as edges 
+gamma = 100; %for smoothening
+c = 4; %for edge contrast; more beta - less contrast considered as edges 
 beta = c*0.5/mean(sum((Z - circshift(Z,1)).^2,2)); 
-k = 4; %number of components in gmm
-maxIter = 2;
+maxIter = 3;
+
 
 pairwise = assmeblePairwise(im,gamma,beta,verbose);
 %% Iterations
 for i = 1:maxIter 
     %% Unary
-    tic
-    gmm_back = gmdistribution.fit(Z(alpha == 1,:),k,'Regularize',1e-4);
-    gmm_fore = gmdistribution.fit(Z(alpha == 2,:),k,'Regularize',1e-4);
+    h = [imhist(uint8(Z(alpha == 1))) imhist(uint8(Z(alpha == 2)))];
+    h = h./repmat(sum(h),256,1);
+    h = h';
+    eps = exp(-50);
+    unary = -10*log(h(:,Z+1)+eps);
     
-    epsl = exp(-50);
-    pdf_back = -log(pdf(gmm_back,Z)+epsl);
-    pdf_fore = -log(pdf(gmm_fore,Z)+epsl);
-    unary = [pdf_back, pdf_fore]';
-    t = toc;
-    if(verbose) disp([num2str(t),' seconds for finding unary matrix']); end
     %% GCO
     gc_obj = GCO_Create(N,2);
     GCO_SetDataCost(gc_obj,int32(unary))
@@ -55,7 +49,6 @@ end
 %% Do some cleanup
 % like removing holes and specks
 BW = logical(reshape(double(labels-1),sz));
-
 BW2 = imfill(BW,'holes'); %fill holes
 BW3 = bwareaopen(BW2,100); % remove specks containing < 100 pixels
 
@@ -71,3 +64,29 @@ subplot(1,2,1)
 imshow(cutImage(im_clr,labels_new,2))
 subplot(1,2,2)
 imshow(BW3)
+
+%% Matting
+% simplify boundary to some  points
+B = bwboundaries(BW3,'noholes');
+p = B{1};
+ps = p(1:10:end,:);
+
+% dilate image
+w = 6; 
+se = strel('diamond', w);
+BW4 = imdilate(bwmorph(BW3,'remove'),se);
+
+% find indices and values of pixels around borders
+lid = find(BW4);
+z_border = double(im(lid));
+
+[r,c] = ind2sub_fast(sz,lid);
+border_indices = [r,c];
+
+% assign closest point in ps to each point in porder and 
+idx = knnsearch(ps,border_indices);
+
+
+for i = 1:size(ps,1)
+    z_i = z_border(idx == i);
+end
