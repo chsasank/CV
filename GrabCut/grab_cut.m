@@ -3,7 +3,7 @@
 clc;clear; close all; addpath('gco-v3.0/matlab')
 verbose = true;
 
-im_clr = imread('varun.jpg');
+im_clr = imread('cat_small.jpg');
 im = im_clr;
 rect = rectInput(im_clr,verbose); % Take input
 sz = size(im);
@@ -22,10 +22,10 @@ N_crop = size(im_crop_clr,1)*size(im_crop_clr,2);
 
 %% Pairwise
 gamma = 40; %for smoothening
-c = 10; %for edge contrast; more beta - less contrast considered as edges 
+c = 1; %for edge contrast; more c - less contrast considered as edges 
 beta = c*0.5/mean(sum((Z - circshift(Z,1)).^2,2)); 
-k = 4; %number of components in gmm
-maxIter = 2;
+k = 3; %number of components in gmm
+maxIter = 5;
 
 pairwise = assmeblePairwise(im,gamma,beta,verbose);
 %% Iterations
