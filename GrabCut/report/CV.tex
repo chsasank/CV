@@ -38,7 +38,7 @@ Let the model parameters for color/intensity model of the background and foregro
 Under this model, let likelihood function be given by $f(z|\theta_\alpha)$. Let us denote all the parameters of the model with $\bar{\theta}$.
 So, our objective is to find $\bar{\alpha}$ given model parameters $\bar{\theta}$.
 
-This can be achieved by maximizing the following with respect to $\bar{\alpha}$ :
+This can be achieved by minimizing the following with respect to $\bar{\alpha}$ :
 \[ 
 E(\bar{\alpha}| \bar{\theta},\bar{z} ) = U(\bar{\alpha}| \bar{\theta},\bar{z}) + V(\bar{\alpha},\bar{z})
 \]
@@ -48,13 +48,13 @@ U(\bar{\alpha}| \bar{\theta},\bar{z}) = \sum_{n=1}^N -\log f(z_i | \theta_{\alph
 \] 
 is called data term or unary term. Observe that this is negative log likelihood of the image data $\bar{z}$. The term
 \[
-V(\bar{\alpha},\bar{z}) = \gamma \sum_{(m,n) \in C} \operatorname{dis}(m,n) \mathbf{1}_{\alpha_m \neq \alpha_n} \exp{-\beta(z_m-z_n)^2}
+V(\bar{\alpha},\bar{z}) = \gamma \sum_{(m,n) \in C} \operatorname{dis}^-1(m,n) \mathbf{1}_{\alpha_m \neq \alpha_n} \exp{-\beta(z_m-z_n)^2}
 \]
 is called smoothness term with $\beta$ and $\gamma$ suitably chosen constants. $C$ is set of all neighbouring pixels and $\operatorname{dis}(m,n)$ is Euclidean distance between pixel $m$ and $n$.  
 This term can be seen as contribution of the prior on $\bar{\alpha}$ that segmentation tends to be smooth. Thus our problem is 
 \begin{equation}
 \begin{aligned}
-& \underset{\bar{\alpha}\in\{0,1 \}^N}{\text{maximize}}
+& \underset{\bar{\alpha}\in\{0,1 \}^N}{\text{minimize}}
 & & E(\bar{\alpha}| \bar{\theta},\bar{z} )
 \end{aligned}
 \end{equation}
@@ -91,7 +91,7 @@ Set $T_1 = \{z_i | i \in \text{user drawn rectangle }\}$ and $T_0 = T_1^c$.
 \begin{equation*}
 \begin{aligned}
 \bar{\alpha} &=  
- \underset{\bar{\alpha}\in\{0,1 \}^N}{\text{maximize}}
+ \underset{\bar{\alpha}\in\{0,1 \}^N}{\text{minimize}}
  & E(\bar{\alpha}| \bar{\theta},\bar{z} )
 \end{aligned}
 \end{equation*}
@@ -148,7 +148,94 @@ As we will see, this can be handled better if full color data is considered.
 \end{figure}
 
 \subsection{GMM Model}
+\begin{figure}[h]
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width = 3in]{rose_input_g.png}
+  \label{fig:sfig1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width = 3in]{rose_output_g.png}
+  \label{fig:sfig2}
+\end{subfigure}
 
+
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width = 3in]{varun_input_g.png}
+  \label{fig:sfig2}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width = 3in]{varun_output_g.png}
+  \label{fig:sfig2}
+\end{subfigure}
+
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width = 3in]{parrot_input_g.png}
+  \label{fig:sfig2}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width = 3in]{parrot_output_g.png}
+  \label{fig:sfig2}
+\end{subfigure}
+
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width = 3in]{penguin_in.png}
+  \label{fig:sfig2}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width = 3in]{penguin_out.png}
+  \label{fig:sfig2}
+\end{subfigure}
+
+\caption{Foreground Extractions for GMM Model}
+\end{figure}
+
+\begin{figure}[h]
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width = 3in]{man_in.png}
+  \label{fig:sfig1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width = 3in]{man_out.png}
+  \label{fig:sfig2}
+\end{subfigure}
+
+
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width = 3in]{temple_in}
+  \label{fig:sfig2}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width = 3in]{temple_out}
+  \label{fig:sfig2}
+\end{subfigure}
+
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width = 3in]{cat_in}
+  \label{fig:sfig2}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width = 3in]{cat_out}
+  \label{fig:sfig2}
+\end{subfigure}
+
+
+
+\caption{Foreground Extractions for GMM Model}
+\end{figure}
 
 \begin{thebibliography}{10}
 
