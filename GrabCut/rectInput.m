@@ -1,7 +1,7 @@
 function [ rect ] = rectInput( im,verbose )
 %rectInput Asks user to draw a rectangle bounding box around foreground
-imshow(im)
-title('Draw a bounding box around foreground')
+imshow(im);
+% title('Draw a bounding box around foreground')
 sz = size(im);
 
 if(nargin <2)

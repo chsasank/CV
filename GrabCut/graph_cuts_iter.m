@@ -4,9 +4,9 @@ clc;clear; close all;
 addpath('gco-v3.0/matlab');
 verbose = true;
 
-im_clr = imread('cat_small.jpg');
+im_clr = imread('eagle.jpg');
 im = rgb2gray(im_clr);
-im = histeq(im);
+% im = histeq(im);
 rect = rectInput(im_clr); % Take input
 sz = size(im);
 sz = sz(1:2);
@@ -20,7 +20,7 @@ alpha = alpha(:);
 
 %% Pairwise
 gamma = 100; %for smoothening
-c = 4; %for edge contrast; more beta - less contrast considered as edges
+c = 2; %for edge contrast; more beta - less contrast considered as edges
 beta = c*0.5/mean(sum((Z - circshift(Z,1)).^2,2));
 maxIter = 3;
 
@@ -45,6 +45,9 @@ for i = 1:maxIter
     GCO_Delete(gc_obj)
     alpha = labels;
     
+    figure
+    imshow(cutImage(im_clr,labels,2))
+    title(num2str(i))
 end
 %% Do some cleanup
 % like removing holes and specks
@@ -57,7 +60,6 @@ labels_new = reshape(BW3,size(labels))+1;
 %% Results
 figure
 imshow(cutImage(im_clr,labels_new,2))
-title(num2str(beta))
 
 figure
 subplot(1,2,1)
