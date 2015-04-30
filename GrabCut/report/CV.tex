@@ -76,11 +76,33 @@ So instead, we fit a Gaussian mixture model of $k$ components to each of the for
 \subsection{General Iterative Algorithm}
 In the first iteration, model parameters $\bar{\theta}$ are obtained from user supplied rectangle foreground and background. 
 These are used to segment the image and this segmentation is in turn used to improve the parameter estimates. This process is repeated until convergence or some maximum iterations are hit.
+This is beneficial as our segmentation estimate keeps on improving.
 We detail this iterative algorithm:
 \begin{description}
 \item[1. User Interaction]:
-$T_f = \{z_i | \normal i  \}$
+Set $T_1 = \{z_i | i \in \text{user drawn rectangle }\}$ and $T_0 = T_1^c$. 
+
+\item[2. Paramter Estimation]: Estimate parameters $\theta_0$ and $\theta_1$ from $T_0$ and $T_1$ respectively. 
+
+\item[3. Segmentation]: Solve 
+\begin{equation*}
+\begin{aligned}
+\bar{\alpha} &=  
+ \underset{\bar{\alpha}\in\{0,1 \}^N}{\text{maximize}}
+ & E(\bar{\alpha}| \bar{\theta},\bar{z} )
+\end{aligned}
+\end{equation*}
+and update $T_k = \{z_i | \alpha_i = k\}$, $k = 0,1$
+
+\item[4. Check for Convergence]: If convergence is not reached or maximum iterations is not hit,  
+go to step 2. Otherwise return $\alpha$.
 \end{description}
+
+\section{Experiments}
+We present results from experiments from the above two models.
+\subsection{Histogram Model}
+
+
 
 
 \begin{thebibliography}{10}
