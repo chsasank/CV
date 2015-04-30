@@ -1,10 +1,10 @@
 %% Read image and take input; initialize
-% Iterative version of graph_cuts
+% Iterative version of graph_cuts; histogram
 clc;clear; close all;
 addpath('gco-v3.0/matlab');
 verbose = true;
 
-im_clr = imread('eagle.jpg');
+im_clr = imread('varun .jpg');
 im = rgb2gray(im_clr);
 % im = histeq(im);
 rect = rectInput(im_clr); % Take input

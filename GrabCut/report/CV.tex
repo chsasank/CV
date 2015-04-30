@@ -20,7 +20,7 @@
 \usepackage{amssymb}
 \begin{document}
 
-\title{Interactive Foreground Extraction using Iterated Graph Cuts}
+\title{Interactive Foreground Extraction using Iterated Graph-Cuts}
 \author{Sasank Chilamkurthy\\Tharun Kumar Reddy\\Rajeev Puppala}
 \date{\today}
 \maketitle
@@ -40,17 +40,17 @@ So, our objective is to find $\bar{\alpha}$ given model parameters $\bar{\theta}
 
 This can be achieved by minimizing the following with respect to $\bar{\alpha}$ :
 \[ 
-E(\bar{\alpha}| \bar{\theta},\bar{z} ) = U(\bar{\alpha}| \bar{\theta},\bar{z}) + V(\bar{\alpha},\bar{z})
+E(\bar{\alpha}| \bar{\theta},\bar{z} ) = U(\bar{\alpha}| \bar{\theta},\bar{z}) + V(\bar{\alpha}|\bar{z})
 \]
 Here, 
 \[
-U(\bar{\alpha}| \bar{\theta},\bar{z}) = \sum_{n=1}^N -\log f(z_i | \theta_{\alpha_i})
+U(\bar{\alpha}| \bar{\theta},\bar{z}) = \sum_{i=1}^N -\log f(z_i | \theta_{\alpha_i})
 \] 
 is called data term or unary term. Observe that this is negative log likelihood of the image data $\bar{z}$. The term
 \[
-V(\bar{\alpha},\bar{z}) = \gamma \sum_{(m,n) \in C} \operatorname{dis}^-1(m,n) \mathbf{1}_{\alpha_m \neq \alpha_n} \exp{-\beta(z_m-z_n)^2}
+V(\bar{\alpha}|\bar{z}) = \gamma \sum_{(m,n) \in C} \operatorname{dis}^{-1}(m,n) \mathbf{1}_{\alpha_m \neq \alpha_n} \exp{-\beta(z_m-z_n)^2}
 \]
-is called smoothness term with $\beta$ and $\gamma$ suitably chosen constants. $C$ is set of all neighbouring pixels and $\operatorname{dis}(m,n)$ is Euclidean distance between pixel $m$ and $n$.  
+is called smoothness term or pairwise term with $\beta$ and $\gamma$ suitably chosen constants. $C$ is set of all neighbouring pixels and $\operatorname{dis}(m,n)$ is Euclidean distance between pixel $m$ and $n$.  
 This term can be seen as contribution of the prior on $\bar{\alpha}$ that segmentation tends to be smooth. Thus our problem is 
 \begin{equation}
 \begin{aligned}
@@ -148,6 +148,7 @@ As we will see, this can be handled better if full color data is considered.
 \end{figure}
 
 \subsection{GMM Model}
+Figure 2 and 3 shows sample segmentations for GMM model. Clearly, results are better for GMM model.
 \begin{figure}[h]
 \begin{subfigure}{.5\textwidth}
   \centering
@@ -183,6 +184,11 @@ As we will see, this can be handled better if full color data is considered.
   \label{fig:sfig2}
 \end{subfigure}
 
+
+\caption{Foreground Extractions for GMM Model}
+\end{figure}
+
+\begin{figure}[h]
 \begin{subfigure}{.5\textwidth}
   \centering
   \includegraphics[width = 3in]{penguin_in.png}
@@ -194,10 +200,6 @@ As we will see, this can be handled better if full color data is considered.
   \label{fig:sfig2}
 \end{subfigure}
 
-\caption{Foreground Extractions for GMM Model}
-\end{figure}
-
-\begin{figure}[h]
 \begin{subfigure}{.5\textwidth}
   \centering
   \includegraphics[width = 3in]{man_in.png}
@@ -236,6 +238,9 @@ As we will see, this can be handled better if full color data is considered.
 
 \caption{Foreground Extractions for GMM Model}
 \end{figure}
+
+\section{Possible Improvements}
+Alpha matte can be done for boundaries so as to smooth the boundaries. Another improvement can be to take user interaction again to improve the segmentation.
 
 \begin{thebibliography}{10}
 

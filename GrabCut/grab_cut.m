@@ -1,9 +1,9 @@
 %% Read image and take input; initialize
-% for color images
+% for color images; GMM
 clc;clear; close all; addpath('gco-v3.0/matlab')
 verbose = true;
 
-im_clr = imread('temple.jpg');
+im_clr = imread('rose.jpg');
 im = im_clr;
 rect = rectInput(im_clr,verbose); % Take input
 sz = size(im);
@@ -44,7 +44,6 @@ for i = 1:maxIter
     %% GCO
     gc_obj = GCO_Create(N,2);
     GCO_SetDataCost(gc_obj,int32(unary))
-    %GCO_SetSmoothCost(gc_obj,ones(2)-eye(2))
     GCO_SetNeighbors(gc_obj,pairwise)
     GCO_Expansion(gc_obj);
     labels = GCO_GetLabeling(gc_obj);
