@@ -1,4 +1,4 @@
-function [ rect ] = rectInput( im,verbose,type)
+function [ mask ] = rectInput( im,verbose,type)
 %rectInput Asks user to draw a rectangle bounding box around foreground
 
 
@@ -10,7 +10,7 @@ if(nargin<3)
     type = 'rect';
 end
 
-if strcrmp(type,'rect')
+if strcmp(type,'rect')
     imshow(im);
     % title('Draw a bounding box around foreground')
     sz = size(im);
@@ -53,16 +53,16 @@ if strcrmp(type,'rect')
         end
     end
     close all
+    mask = ones(sz(1),sz(2));
+    mask(rect(1):rect(1)+rect(3),rect(2):rect(2)+rect(4)) = 2;
+
 else %free hand
     figure, imshow(im);
     h = imfreehand(gca);
     maskSource = createMask(h);
     
-    SF = size(Isource);
-    S = SF(1:2);
-    mask = maskSource(1:size(Isource,1),1:size(Isource,2));
-    boundary = bwperim(mask);
-    mask_boundary = mask;
-    mask_boundary(boundary) = 0;
+    sz = size(im);
+    mask = maskSource(1:sz(1),1:sz(2)) + 1;
+
 end
 

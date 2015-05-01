@@ -3,22 +3,18 @@
 clc;clear; close all; addpath('gco-v3.0/matlab')
 verbose = true;
 
-im_clr = imread('cat.jpg');
+im_clr = imread('siddhu.jpg');
 im = im_clr;
-rect = rectInput(im_clr,verbose); % Take input
+mask = rectInput(im_clr,false,'freehand'); % Take input
 sz = size(im);
 sz = sz(1:2);
 
 N = sz(1)*sz(2);
 Z = double(reshape(im,N,3));
 
-alpha = ones(sz(1),sz(2));
-alpha(rect(1):rect(1)+rect(3),rect(2):rect(2)+rect(4)) = 2;
-alpha = alpha(:);
-
-im_crop_clr = im_clr(rect(1):rect(1)+rect(3),rect(2):rect(2)+rect(4),:);
-N_crop = size(im_crop_clr,1)*size(im_crop_clr,2);
-
+% alpha = ones(sz(1),sz(2));
+% alpha(rect(1):rect(1)+rect(3),rect(2):rect(2)+rect(4)) = 2;
+alpha = mask(:);
 
 %% Pairwise
 gamma = 50; %for smoothening
